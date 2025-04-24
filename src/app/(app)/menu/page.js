@@ -90,16 +90,16 @@ export default function Menu() {
     const pedido = {newOrders: newOrders, nome: nome}
     Cookies.remove("autorizado")
     const pedidoFeito = Cookies.get("pedido")
-    // if(!pedidoFeito){
+    if(!pedidoFeito){
       Cookies.set("pedido", true)
       socket.emit("new-order", pedido)
       redirect("/waiting")
-    // } else {
-    //   const xhr = new XMLHttpRequest()
-    //   xhr.open("POST", "/api/pedido")
-    //   xhr.send()
-    //   redirect("/negado")
-    // }
+    } else {
+      const xhr = new XMLHttpRequest()
+      xhr.open("POST", "/api/pedido")
+      xhr.send()
+      redirect("/negado")
+    }
   }
 
   return(
