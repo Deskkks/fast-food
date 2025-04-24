@@ -30,6 +30,8 @@ export default function Retirada({data}) {
               <div className={styles.comanda}>
                 <div className={styles.pedido}>
                   <p>{comanda.salgado}</p>
+                </div>
+                <div>
                   <p>{comanda.doce}</p>
                 </div>
                 <div className={styles.pedido}>
@@ -42,6 +44,12 @@ export default function Retirada({data}) {
                       socket.emit("taked", comanda.userId)
                     }}
                   >Pronto</div>
+                  <div
+                    className={styles.button}
+                    onClick={() => {
+                      socket.emit("incorrect", comanda.userId)
+                    }}
+                  >Incorreto</div>
                 </div>
               </div>
             </div>

@@ -128,7 +128,8 @@ exports.Prisma.CommandsScalarFieldEnum = {
   userId: 'userId',
   nome: 'nome',
   pronto: 'pronto',
-  entregue: 'entregue'
+  entregue: 'entregue',
+  incorreto: 'incorreto'
 };
 
 exports.Prisma.OrdersScalarFieldEnum = {

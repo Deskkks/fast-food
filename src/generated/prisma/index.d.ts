@@ -2143,6 +2143,7 @@ export namespace Prisma {
     nome: string | null
     pronto: boolean | null
     entregue: boolean | null
+    incorreto: boolean | null
   }
 
   export type CommandsMaxAggregateOutputType = {
@@ -2151,6 +2152,7 @@ export namespace Prisma {
     nome: string | null
     pronto: boolean | null
     entregue: boolean | null
+    incorreto: boolean | null
   }
 
   export type CommandsCountAggregateOutputType = {
@@ -2159,6 +2161,7 @@ export namespace Prisma {
     nome: number
     pronto: number
     entregue: number
+    incorreto: number
     _all: number
   }
 
@@ -2177,6 +2180,7 @@ export namespace Prisma {
     nome?: true
     pronto?: true
     entregue?: true
+    incorreto?: true
   }
 
   export type CommandsMaxAggregateInputType = {
@@ -2185,6 +2189,7 @@ export namespace Prisma {
     nome?: true
     pronto?: true
     entregue?: true
+    incorreto?: true
   }
 
   export type CommandsCountAggregateInputType = {
@@ -2193,6 +2198,7 @@ export namespace Prisma {
     nome?: true
     pronto?: true
     entregue?: true
+    incorreto?: true
     _all?: true
   }
 
@@ -2286,8 +2292,9 @@ export namespace Prisma {
     id: number
     userId: string | null
     nome: string | null
-    pronto: boolean | null
-    entregue: boolean | null
+    pronto: boolean
+    entregue: boolean
+    incorreto: boolean
     _count: CommandsCountAggregateOutputType | null
     _avg: CommandsAvgAggregateOutputType | null
     _sum: CommandsSumAggregateOutputType | null
@@ -2315,6 +2322,7 @@ export namespace Prisma {
     nome?: boolean
     pronto?: boolean
     entregue?: boolean
+    incorreto?: boolean
     orders?: boolean | commands$ordersArgs<ExtArgs>
     _count?: boolean | CommandsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["commands"]>
@@ -2327,9 +2335,10 @@ export namespace Prisma {
     nome?: boolean
     pronto?: boolean
     entregue?: boolean
+    incorreto?: boolean
   }
 
-  export type commandsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "nome" | "pronto" | "entregue", ExtArgs["result"]["commands"]>
+  export type commandsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "nome" | "pronto" | "entregue" | "incorreto", ExtArgs["result"]["commands"]>
   export type commandsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | commands$ordersArgs<ExtArgs>
     _count?: boolean | CommandsCountOutputTypeDefaultArgs<ExtArgs>
@@ -2344,8 +2353,9 @@ export namespace Prisma {
       id: number
       userId: string | null
       nome: string | null
-      pronto: boolean | null
-      entregue: boolean | null
+      pronto: boolean
+      entregue: boolean
+      incorreto: boolean
     }, ExtArgs["result"]["commands"]>
     composites: {}
   }
@@ -2721,6 +2731,7 @@ export namespace Prisma {
     readonly nome: FieldRef<"commands", 'String'>
     readonly pronto: FieldRef<"commands", 'Boolean'>
     readonly entregue: FieldRef<"commands", 'Boolean'>
+    readonly incorreto: FieldRef<"commands", 'Boolean'>
   }
     
 
@@ -5961,7 +5972,8 @@ export namespace Prisma {
     userId: 'userId',
     nome: 'nome',
     pronto: 'pronto',
-    entregue: 'entregue'
+    entregue: 'entregue',
+    incorreto: 'incorreto'
   };
 
   export type CommandsScalarFieldEnum = (typeof CommandsScalarFieldEnum)[keyof typeof CommandsScalarFieldEnum]
@@ -6141,8 +6153,9 @@ export namespace Prisma {
     id?: IntFilter<"commands"> | number
     userId?: StringNullableFilter<"commands"> | string | null
     nome?: StringNullableFilter<"commands"> | string | null
-    pronto?: BoolNullableFilter<"commands"> | boolean | null
-    entregue?: BoolNullableFilter<"commands"> | boolean | null
+    pronto?: BoolFilter<"commands"> | boolean
+    entregue?: BoolFilter<"commands"> | boolean
+    incorreto?: BoolFilter<"commands"> | boolean
     orders?: OrdersListRelationFilter
   }
 
@@ -6150,8 +6163,9 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrderInput | SortOrder
     nome?: SortOrderInput | SortOrder
-    pronto?: SortOrderInput | SortOrder
-    entregue?: SortOrderInput | SortOrder
+    pronto?: SortOrder
+    entregue?: SortOrder
+    incorreto?: SortOrder
     orders?: ordersOrderByRelationAggregateInput
     _relevance?: commandsOrderByRelevanceInput
   }
@@ -6163,8 +6177,9 @@ export namespace Prisma {
     OR?: commandsWhereInput[]
     NOT?: commandsWhereInput | commandsWhereInput[]
     nome?: StringNullableFilter<"commands"> | string | null
-    pronto?: BoolNullableFilter<"commands"> | boolean | null
-    entregue?: BoolNullableFilter<"commands"> | boolean | null
+    pronto?: BoolFilter<"commands"> | boolean
+    entregue?: BoolFilter<"commands"> | boolean
+    incorreto?: BoolFilter<"commands"> | boolean
     orders?: OrdersListRelationFilter
   }, "id" | "userId">
 
@@ -6172,8 +6187,9 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrderInput | SortOrder
     nome?: SortOrderInput | SortOrder
-    pronto?: SortOrderInput | SortOrder
-    entregue?: SortOrderInput | SortOrder
+    pronto?: SortOrder
+    entregue?: SortOrder
+    incorreto?: SortOrder
     _count?: commandsCountOrderByAggregateInput
     _avg?: commandsAvgOrderByAggregateInput
     _max?: commandsMaxOrderByAggregateInput
@@ -6188,8 +6204,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"commands"> | number
     userId?: StringNullableWithAggregatesFilter<"commands"> | string | null
     nome?: StringNullableWithAggregatesFilter<"commands"> | string | null
-    pronto?: BoolNullableWithAggregatesFilter<"commands"> | boolean | null
-    entregue?: BoolNullableWithAggregatesFilter<"commands"> | boolean | null
+    pronto?: BoolWithAggregatesFilter<"commands"> | boolean
+    entregue?: BoolWithAggregatesFilter<"commands"> | boolean
+    incorreto?: BoolWithAggregatesFilter<"commands"> | boolean
   }
 
   export type ordersWhereInput = {
@@ -6397,8 +6414,9 @@ export namespace Prisma {
   export type commandsCreateInput = {
     userId?: string | null
     nome?: string | null
-    pronto?: boolean | null
-    entregue?: boolean | null
+    pronto?: boolean
+    entregue?: boolean
+    incorreto?: boolean
     orders?: ordersCreateNestedManyWithoutCommandsInput
   }
 
@@ -6406,16 +6424,18 @@ export namespace Prisma {
     id?: number
     userId?: string | null
     nome?: string | null
-    pronto?: boolean | null
-    entregue?: boolean | null
+    pronto?: boolean
+    entregue?: boolean
+    incorreto?: boolean
     orders?: ordersUncheckedCreateNestedManyWithoutCommandsInput
   }
 
   export type commandsUpdateInput = {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     nome?: NullableStringFieldUpdateOperationsInput | string | null
-    pronto?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    entregue?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pronto?: BoolFieldUpdateOperationsInput | boolean
+    entregue?: BoolFieldUpdateOperationsInput | boolean
+    incorreto?: BoolFieldUpdateOperationsInput | boolean
     orders?: ordersUpdateManyWithoutCommandsNestedInput
   }
 
@@ -6423,8 +6443,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     nome?: NullableStringFieldUpdateOperationsInput | string | null
-    pronto?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    entregue?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pronto?: BoolFieldUpdateOperationsInput | boolean
+    entregue?: BoolFieldUpdateOperationsInput | boolean
+    incorreto?: BoolFieldUpdateOperationsInput | boolean
     orders?: ordersUncheckedUpdateManyWithoutCommandsNestedInput
   }
 
@@ -6432,23 +6453,26 @@ export namespace Prisma {
     id?: number
     userId?: string | null
     nome?: string | null
-    pronto?: boolean | null
-    entregue?: boolean | null
+    pronto?: boolean
+    entregue?: boolean
+    incorreto?: boolean
   }
 
   export type commandsUpdateManyMutationInput = {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     nome?: NullableStringFieldUpdateOperationsInput | string | null
-    pronto?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    entregue?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pronto?: BoolFieldUpdateOperationsInput | boolean
+    entregue?: BoolFieldUpdateOperationsInput | boolean
+    incorreto?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type commandsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     nome?: NullableStringFieldUpdateOperationsInput | string | null
-    pronto?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    entregue?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pronto?: BoolFieldUpdateOperationsInput | boolean
+    entregue?: BoolFieldUpdateOperationsInput | boolean
+    incorreto?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ordersCreateInput = {
@@ -6712,6 +6736,11 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type OrdersListRelationFilter = {
     every?: ordersWhereInput
     some?: ordersWhereInput
@@ -6734,6 +6763,7 @@ export namespace Prisma {
     nome?: SortOrder
     pronto?: SortOrder
     entregue?: SortOrder
+    incorreto?: SortOrder
   }
 
   export type commandsAvgOrderByAggregateInput = {
@@ -6746,6 +6776,7 @@ export namespace Prisma {
     nome?: SortOrder
     pronto?: SortOrder
     entregue?: SortOrder
+    incorreto?: SortOrder
   }
 
   export type commandsMinOrderByAggregateInput = {
@@ -6754,10 +6785,19 @@ export namespace Prisma {
     nome?: SortOrder
     pronto?: SortOrder
     entregue?: SortOrder
+    incorreto?: SortOrder
   }
 
   export type commandsSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -6945,6 +6985,10 @@ export namespace Prisma {
     connect?: ordersWhereUniqueInput | ordersWhereUniqueInput[]
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type ordersUpdateManyWithoutCommandsNestedInput = {
     create?: XOR<ordersCreateWithoutCommandsInput, ordersUncheckedCreateWithoutCommandsInput> | ordersCreateWithoutCommandsInput[] | ordersUncheckedCreateWithoutCommandsInput[]
     connectOrCreate?: ordersCreateOrConnectWithoutCommandsInput | ordersCreateOrConnectWithoutCommandsInput[]
@@ -7092,6 +7136,19 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | null
@@ -7169,16 +7226,18 @@ export namespace Prisma {
   export type commandsCreateWithoutOrdersInput = {
     userId?: string | null
     nome?: string | null
-    pronto?: boolean | null
-    entregue?: boolean | null
+    pronto?: boolean
+    entregue?: boolean
+    incorreto?: boolean
   }
 
   export type commandsUncheckedCreateWithoutOrdersInput = {
     id?: number
     userId?: string | null
     nome?: string | null
-    pronto?: boolean | null
-    entregue?: boolean | null
+    pronto?: boolean
+    entregue?: boolean
+    incorreto?: boolean
   }
 
   export type commandsCreateOrConnectWithoutOrdersInput = {
@@ -7200,16 +7259,18 @@ export namespace Prisma {
   export type commandsUpdateWithoutOrdersInput = {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     nome?: NullableStringFieldUpdateOperationsInput | string | null
-    pronto?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    entregue?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pronto?: BoolFieldUpdateOperationsInput | boolean
+    entregue?: BoolFieldUpdateOperationsInput | boolean
+    incorreto?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type commandsUncheckedUpdateWithoutOrdersInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     nome?: NullableStringFieldUpdateOperationsInput | string | null
-    pronto?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    entregue?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    pronto?: BoolFieldUpdateOperationsInput | boolean
+    entregue?: BoolFieldUpdateOperationsInput | boolean
+    incorreto?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ordersCreateManyCommandsInput = {

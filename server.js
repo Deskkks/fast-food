@@ -136,6 +136,46 @@ app.prepare().then(() => {
       io.emit("cozinha-data", cozinhaData)
       io.emit("retirada-data", retiradaData)
     })
+    socket.on("incorrect", async (id) => {
+      socket.to(id).emit("incorrect")
+
+      const update = await prisma.commands.update({
+        where: {
+          userId: id
+        },
+        data: {
+          pronto: true,
+          entregue: true,
+          incorreto: true
+        }
+      })
+
+      const cozinhaComandas = await prisma.commands.findMany({
+        include: {
+          orders: true
+        },
+        where: {
+          pronto: false
+        }
+      })
+
+      const retiradaComandas = await prisma.commands.findMany({
+        include: {
+          orders: true
+        },
+        where: {
+          pronto: true,
+          entregue: false
+        }
+      })
+
+      const cozinhaData = Data(cozinhaComandas)
+      const retiradaData = Data(retiradaComandas)
+
+      io.emit("cozinha-data", cozinhaData)
+      io.emit("retirada-data", retiradaData)
+
+    })
     socket.on("taked", async (id) => {
       socket.to(id).emit("taked")
 

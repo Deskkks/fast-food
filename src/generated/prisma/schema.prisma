@@ -15,12 +15,13 @@ model codes {
 }
 
 model commands {
-  id       Int      @id @default(autoincrement())
-  userId   String?  @unique(map: "userId") @db.VarChar(255)
-  nome     String?  @db.VarChar(255)
-  pronto   Boolean?
-  entregue Boolean?
-  orders   orders[]
+  id        Int      @id @default(autoincrement())
+  userId    String?  @unique(map: "userId") @db.VarChar(255)
+  nome      String?  @db.VarChar(255)
+  pronto    Boolean  @default(false)
+  entregue  Boolean  @default(false)
+  incorreto Boolean  @default(false)
+  orders    orders[]
 }
 
 model orders {
