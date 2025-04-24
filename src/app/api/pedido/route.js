@@ -1,12 +1,15 @@
-﻿import Codes from "@/models/code";
-import { command, order } from "@/models/comanda";
+﻿import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers";
+
+const prisma = new PrismaClient()
 
 export async function GET() {
 
-  const data = await command.findAll({include: {
-    model: order
-  }})
+  const data = await prisma.commands.findMany({
+    include: {
+      orders: true
+    }
+  })
 
   return Response.json(data)
 }
@@ -16,13 +19,13 @@ export async function POST() {
   const cookieStore = await cookies()
   const userCode = cookieStore.get("userCode").value
 
-  console.log(userCode)
-
-  Codes.findOne({where: {code: userCode}})
-  .then((code) => {
-    code.update({
+  const update = await prisma.codes.update({
+    where: {
+      code: userCode
+    },
+    data: {
       connected: false
-    })
+    }
   })
   return Response("success")
 }

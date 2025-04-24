@@ -1,14 +1,17 @@
-﻿import Codes from "@/models/code";
+﻿import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function GET(req) {
+
+  const prisma = new PrismaClient()
+
   const searchParams = req.nextUrl.searchParams
   const id = searchParams.get("id")
 
   const cookieStore = await cookies()
 
-  const codes = await Codes.findAll()
+  const codes = await prisma.codes.findMany()
 
   codes.map((code) => {
     if(id === code.code && code.connected === false){

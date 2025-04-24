@@ -4,24 +4,23 @@
   justify-content: baseline;
   width: 100%;
   background-color: transparent;
-  color: #fff;
   overflow-y: scroll;
   max-height: 465px;
 }
 
 .conteiner::-webkit-scrollbar {
-  background-color: transparent;
+  background-color: #aaa;
   width: 10px;
 }
 
 .conteiner::-webkit-scrollbar-thumb{
-  background-color: #fff;
+  background-color: #000;
   border-radius: 20px;
   padding-right: 5px;
 }
 
 .ContComanda:nth-child(even){
-  background-color: #333;
+  background-color: #ccc;
 }
 
 .ContComanda{
@@ -52,10 +51,10 @@
 }
 
 .button{
+  color: #fff;
   text-align: center;
   width: 80%;
   background-color: rgb(17, 68, 17);
-  color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   margin-bottom: 10px;

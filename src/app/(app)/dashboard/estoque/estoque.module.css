@@ -1,17 +1,16 @@
 ﻿.conteiner{
-  color: #fff;
   overflow-y: scroll;
   margin: 20px 20px 0;
   max-height: 450px;
 }
 
 .conteiner::-webkit-scrollbar {
-  background-color: transparent;
+  background-color: #aaa;
   width: 10px;
 }
 
 .conteiner::-webkit-scrollbar-thumb{
-  background-color: #fff;
+  background-color: #000;
   border-radius: 20px;
 }
 
@@ -34,7 +33,7 @@
 }
 
 .contProducts:nth-child(even){
-  background-color: #333;
+  background-color: #ccc;
 }
 
 .product{
@@ -50,7 +49,6 @@
 .button{
   text-align: center;
   background-color: rgb(17, 68, 17);
-  color: #fff;
   padding: 5px 20px;
   border-radius: 5px;
   margin: 0 10px;

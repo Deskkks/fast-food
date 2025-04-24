@@ -1,14 +1,18 @@
-﻿import { command, order } from "@/models/comanda"
+﻿import { PrismaClient } from "@/generated/prisma"
 import Data from "../data.js"
 
 export async function GET() {
 
-  const comandas = await command.findAll({include:{
-    model: order
-  },
-  where : {
-    pronto: false
-  }})
+  const prisma = new PrismaClient()
+
+  const comandas = await prisma.commands.findMany({
+    include:{
+      orders: true
+    },
+    where: {
+      pronto: false
+    }
+  })
 
   const data = Data(comandas)
 

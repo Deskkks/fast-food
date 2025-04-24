@@ -1,21 +1,16 @@
 ﻿import { createServer } from "node:http";
 import next from "next";
 import { Server } from "socket.io";
-import { command, order } from "./src/models/comanda.js";
-import stock from "./src/models/estoque.js";
 import Data from "./src/app/api/pedido/data.js";
+import { PrismaClient } from "./src/generated/prisma/index.js";
+
+const prisma = new PrismaClient()
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost" || "amburana-production.up.railway.app";
 const port = 8080;
 const app = next({ dev, hostname, port });
 const handler = app.getRequestHandler();
-
-command.hasMany(order, {
-  onDelete:"CASCADE"
-})
-order.belongsTo(command)
-
 
 app.prepare().then(() => {
   const httpServer = createServer(handler);
@@ -25,7 +20,7 @@ app.prepare().then(() => {
   });
 
   io.on("connection", (socket) => {
-    socket.on("new-order", (pedido) => {
+    socket.on("new-order", async (pedido) => {
       
       let id = socket.id
 
@@ -39,47 +34,60 @@ app.prepare().then(() => {
         }
       })
 
-      let comanda
 
       if(quantidadeOrders > 0){
 
-        command.create({
-          userId: id,
-          nome: pedido.nome,
-          pronto: false,
-          entregue: false,
-        })
-        .then((data) =>{
-          comanda = data
-          pedido.newOrders.map(newOrder => {
-            if(newOrder.produto){
-              order.create(newOrder)
-              .then(async (data) => {
-                await comanda.addOrder(data)
-                command.findAll({include: {model: order}, where: {pronto: false}})
-                .then((commands) => {
-                  const data = Data(commands)
-                  io.emit("cozinha-data", data)
-                })
-              })
+        const create = await prisma.commands.create({
+          data: {
+            userId: id,
+            nome: pedido.nome,
+            pronto: false,
+            entregue: false,
+            orders: {
+              createMany: {
+                data: pedido.newOrders
+              }
             }
-          })
+          }
         })
+        console.log(pedido)
+
+        const comandas = await prisma.commands.findMany({
+          include: {
+            orders: true
+          },
+          where: {
+            pronto: false
+          }
+        })
+        const data = Data(comandas)
+        io.emit("cozinha-data", data)
+
       }
 
       // diminuir estoque
-      pedido.newOrders.map(newOrder => {
+      pedido.newOrders.map(async newOrder => {
         if(newOrder.produto){
-          stock.findOne({where: {produto: newOrder.produto}})
-          .then(produto => {
-            if(produto.quantidade > 0 ){
-              let novaQuantidade = produto.quantidade-1
-              if(novaQuantidade <= limite){
-                io.emit("alert", produto.produto)
-              }
-              produto.update({quantidade: novaQuantidade})
+          
+          const produto = await prisma.stocks.findUnique({
+            where: {
+              produto: newOrder.produto
             }
           })
+          if(produto.quantidade > 0 ){
+            let novaQuantidade = produto.quantidade-1
+            if(novaQuantidade <= limite){
+              io.emit("alert", produto.produto)
+            }
+            const update = await prisma.stocks.update({
+              where: {
+                produto: produto.produto
+              },
+              data: {
+                quantidade: novaQuantidade
+              }
+            })
+          }
         }
         // prototipo do estoque de embalagens
         // newOrder.embalagens.map((embalagem) => {
@@ -91,32 +99,67 @@ app.prepare().then(() => {
         // })
       })
     })
-    socket.on("ready", (id) => {
+    socket.on("ready", async (id) => {
       socket.to(id).emit("ready")
-      command.update({pronto: true},{where: {userId: id}})
-      .then(() => {
-        command.findAll({include:{model:order}, where: {pronto: false}})
-        .then((commands) => {
-          const data = Data(commands)
-          io.emit("cozinha-data", data)
-        })
-        command.findAll({include:{model: order}, where: {pronto: true, entregue: false}})
-        .then((commands) => {
-          const data = Data(commands)
-          io.emit("retirada-data", data)
-        })
+
+      const update = await prisma.commands.update({
+        where: {
+          userId: id
+        },
+        data: {
+          pronto: true
+        }
       })
+
+      const cozinhaComandas = await prisma.commands.findMany({
+        include: {
+          orders: true
+        },
+        where: {
+          pronto: false
+        }
+      })
+
+      const retiradaComandas = await prisma.commands.findMany({
+        include: {
+          orders: true
+        },
+        where: {
+          pronto: true,
+          entregue: false
+        }
+      })
+
+      const cozinhaData = Data(cozinhaComandas)
+      const retiradaData = Data(retiradaComandas)
+
+      io.emit("cozinha-data", cozinhaData)
+      io.emit("retirada-data", retiradaData)
     })
-    socket.on("taked", (id) => {
+    socket.on("taked", async (id) => {
       socket.to(id).emit("taked")
-      command.update({entregue: true}, {where: {userId:id}})
-      .then(() => {
-        command.findAll({include:{model: order}, where: {pronto: true, entregue: false}})
-        .then((commands) => {
-          const data = Data(commands)
-          io.emit("retirada-data", data)
-        })
+
+      const update = await prisma.commands.update({
+        where: {
+          userId: id
+        },
+        data: {
+          entregue: true
+        }
       })
+
+      const retiradaComandas = await prisma.commands.findMany({
+        include: {
+          orders: true
+        },
+        where: {
+          pronto: true,
+          entregue: false
+        }
+      })
+
+      const retiradaData = Data(retiradaComandas)
+      io.emit("retirada-data", retiradaData)
     })
   });
 

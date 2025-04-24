@@ -1,9 +1,11 @@
 ﻿import { redirect } from "next/navigation"
-import ratingModel from "../../../models/avaliação"
+import { PrismaClient } from "@/generated/prisma"
+
+const prisma = new PrismaClient()
 
 export async function GET() {
 
-  const data = await ratingModel.findAll()
+  const data = await prisma.ratings.findMany()
   
   let sumRating = 0
   let sumFood = 0
@@ -49,19 +51,20 @@ export async function POST(req) {
 
   const formData = await req.formData()
 
-  console.log(formData)
   const rating = formData.get('rating')
   const food = formData.get("food")
   const time = formData.get("time")
   const recomendation = formData.get("recomendation")
   const comment = formData.get("comment")
   
-  ratingModel.create({
-    rating: rating,
-    food: food,
-    time: time,
-    recomendation: recomendation,
-    comment: comment
+  const create = prisma.ratings.create({
+    data: {
+      rating: rating,
+      food: food,
+      time: time,
+      recomendation: recomendation,
+      comment: comment
+    }
   })
 
   redirect("/thanks")

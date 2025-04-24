@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model codes {
+  id        Int      @id @default(autoincrement())
+  code      String?  @db.VarChar(255)
+  connected Boolean?
+}
+
+model commands {
+  id       Int      @id @default(autoincrement())
+  userId   String?  @unique(map: "userId") @db.VarChar(255)
+  nome     String?  @db.VarChar(255)
+  pronto   Boolean?
+  entregue Boolean?
+  orders   orders[]
+}
+
+model orders {
+  id        Int       @id @default(autoincrement())
+  produto   String?   @db.VarChar(255)
+  tipo      String?   @db.VarChar(255)
+  commandId Int?
+  commands  commands? @relation(fields: [commandId], references: [id], onDelete: Cascade, map: "orders_ibfk_1")
+
+  @@index([commandId], map: "commandId")
+}
+
+model ratings {
+  id            Int     @id @default(autoincrement())
+  rating        Int?
+  food          Int?
+  time          Int?
+  recomendation Int?
+  comment       String? @db.VarChar(255)
+}
+
+model stocks {
+  id         Int     @id @default(autoincrement())
+  produto    String? @unique @db.VarChar(255)
+  quantidade Int?
+  tipo       String? @db.VarChar(255)
+}
