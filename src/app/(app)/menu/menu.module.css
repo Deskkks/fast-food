@@ -2,6 +2,7 @@
   opacity: 1;
   animation: card 3s;
   font-weight: 600;
+  margin-top: 20px;
 }
 
 @keyframes card {
@@ -83,4 +84,63 @@
 .dignome {
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+@media screen and (min-width: 800px){
+  .card{
+    width: 95%;
+    margin: inherit 20px;
+    height: 95%;
+  }
+
+  .card form{
+    height: 100%
+  }
+
+  .card form > div:first-child {
+    height: 85%;
+  }
+
+  .nome input{
+    font-size: 20px;
+  }
+
+  .conteiner {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .tipo {
+    border: none;
+  }
+
+  .produto{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .produto img {
+    border-radius: 20px;
+  }
+
+  .produto label {
+    width: 300px;
+    margin: 0 10px;
+  }
+
+  .descricao {
+    width: 250px;
+  }
+
+  .button{
+    margin: 20px auto 0;
+    width: 30%;
+  }
+  
+  .button button {
+    font-size: 20px;
+  }
 }

@@ -3,7 +3,7 @@
     <div style={{
       backgroundColor: "#fff",
       padding: "20px",
-      borderRadius: "10px",
+      borderRadius: "5px",
     }}>
       {children}
     </div>

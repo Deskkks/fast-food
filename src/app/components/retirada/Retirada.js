@@ -11,7 +11,7 @@ export default function Retirada({data}) {
   
   return(
     <div>
-      <div style={{display: "flex", justifyContent: "space-between", margin: "10px"}}>
+      <div className={styles.title}>
         <p>Pedidos para entregar: </p>
         <div>
           <MdArrowForwardIos

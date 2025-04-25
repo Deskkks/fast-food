@@ -19,7 +19,16 @@
   padding-right: 5px;
 }
 
-.ContComanda:nth-child(even){
+.title {
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  display:flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.ContComanda:nth-child(odd){
   background-color: #ccc;
 }
 

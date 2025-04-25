@@ -20,14 +20,14 @@
 }
 
 .text {
-  margin-left: 20px;
+  margin-left: 25px;
   font-size: 40px;
 }
 
 .conteiner p {
   color: #ffffff;
   text-align: center;
-  width: 800px;
+  font-weight: 600;
 }
 
 .fpedido {
@@ -47,4 +47,16 @@
   color: #ffffff !important;
   cursor: pointer;
   letter-spacing: 2px;
+}
+
+@media screen and (min-width: 800px){
+  .conteiner p{
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .conteiner p{
+    width: 400px;
+  }
 }

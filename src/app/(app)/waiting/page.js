@@ -21,14 +21,38 @@ export default function Waiting() {
   })
 
   return(
-    <Card>
-      {
-        ready ? (
-          <h2>O pedido está pronto</h2>
-        ) : (
-          <h2>O pedido está sendo feito</h2>
-        )
-      }
-    </Card>
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "400px",
+      height: "100%",
+      textAlign: "center",
+    }}>
+      <Card>
+        <div style={{
+          width:"350px",
+          margin:"0 auto",
+          color: "#032A0D"
+        }}>
+          {
+            !ready ? (
+              <h2>SEU PEDIDO ESTÁ SENDO PREPARADO</h2>
+            ) : (
+              <h2>SEU PEDIDO ESTÁ PRONTO</h2>
+            )
+          }
+        </div>
+      </Card>
+      <div style={{
+        color: "white",
+        marginTop: "10px",
+        fontWeight: "bolder",
+        marginBottom: "70px"
+      }}>
+        Assim que seu pedido estiver pronto, a mensagem acima será atualizada!
+      </div>
+    </div>
   )
 }

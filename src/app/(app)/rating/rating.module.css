@@ -1,4 +1,13 @@
-﻿.image{
+﻿.conteiner{
+  color: #032A0D;
+  font-weight: 900;
+}
+
+.conteiner h1{
+  text-align: center;
+}
+
+.image{
   user-select: none;
   -webkit-user-drag: none;
   margin: 0 3px;
@@ -7,12 +16,14 @@
 }
 
 .desc{
+  color: #000;
   opacity: 0.6;
   font-size: small;
 }
 
 .comment{
   width: 90%;
+  text-align: start;
 }
 
 .comment textarea {
@@ -26,4 +37,28 @@
 
 .comment textarea:focus{
   outline: 1px hsla(0, 0%, 0%, 0.6) solid;
+}
+
+@media screen and (min-width: 800px) {
+  .questions {
+    display: grid;
+    grid-template: 100px 100px / 50% 50%;
+    text-align: center;
+  }
+  
+  .questions > div {
+    margin: 10px 50px;
+  }
+
+  .comment {
+    width: 100%;
+  }
+
+  .button {
+    width: 30%;
+    margin: auto;
+  }
+  .button button {
+    font-size: 20px;
+  }
 }

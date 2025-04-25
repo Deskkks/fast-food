@@ -90,78 +90,88 @@ export default function Avaliacoes() {
   return(
     <Loading loading={loading}>
       <div className={styles.conteiner}>
-        <div className={styles.avarages}>
-          <div>
-            <p>Média: {rating}</p>
-            {
-              stars[0].map((star,key) => (
-                <Image
-                  src={star}
-                  width={25}
-                  height={25}
-                  alt="estrelas de avalição do nosso serviço"
-                  key={key}
-                  className={styles.image}
-                />
-              ))
-            }
+        <div>
+          <div className={styles.title}>
+            VISÃO GERAL
           </div>
-          <div>
-            <p>Média comida: {food}</p>
-            {
-              stars[1].map((star,key) => (
-                <Image
-                  src={star}
-                  width={25}
-                  height={25}
-                  alt="estrelas de avalição do nosso serviço"
-                  key={key}
-                  className={styles.image}
-                />
-              ))
-            }
-          </div>
-          <div>
-            <p>Média tempo: {time}</p>
-            {
-              stars[2].map((star,key) => (
-                <Image
-                  src={star}
-                  width={25}
-                  height={25}
-                  alt="estrelas de avalição do nosso serviço"
-                  key={key}
-                  className={styles.image}
-                />
-              ))
-            }
-          </div>
-          <div>
-            <p>Média recomendação: {recomendation}</p>
-            {
-              stars[3].map((star,key) => (
-                <Image
-                  src={star}
-                  width={25}
-                  height={25}
-                  alt="estrelas de avalição do nosso serviço"
-                  key={key}
-                  className={styles.image}
-                />
-              ))
-            }
+          <div className={styles.avarages}>
+            <div>
+              <p>Média: {rating}</p>
+              {
+                stars[0].map((star,key) => (
+                  <Image
+                    src={star}
+                    width={35}
+                    height={35}
+                    alt="estrelas de avalição do nosso serviço"
+                    key={key}
+                    className={styles.image}
+                  />
+                ))
+              }
+            </div>
+            <div>
+              <p>Média comida: {food}</p>
+              {
+                stars[1].map((star,key) => (
+                  <Image
+                    src={star}
+                    width={35}
+                    height={35}
+                    alt="estrelas de avalição do nosso serviço"
+                    key={key}
+                    className={styles.image}
+                  />
+                ))
+              }
+            </div>
+            <div>
+              <p>Média tempo: {time}</p>
+              {
+                stars[2].map((star,key) => (
+                  <Image
+                    src={star}
+                    width={35}
+                    height={35}
+                    alt="estrelas de avalição do nosso serviço"
+                    key={key}
+                    className={styles.image}
+                  />
+                ))
+              }
+            </div>
+            <div>
+              <p>Média recomendação: {recomendation}</p>
+              {
+                stars[3].map((star,key) => (
+                  <Image
+                    src={star}
+                    width={35}
+                    height={35}
+                    alt="estrelas de avalição do nosso serviço"
+                    key={key}
+                    className={styles.image}
+                  />
+                ))
+              }
+            </div>
           </div>
         </div>
-        <div className={styles.comments}>
-          {
-            comments.map((comment, key) => (
-              comment && (
-                <div key={key} className={styles.comment}>
-                  {comment}
-                </div>
-              )
-            ))
-          }
+        <div>
+          <div className={styles.title}>
+            CRITICAS, ELOGIOS OU SUGESTÕES
+          </div>
+          <div className={styles.comments}>
+            {
+              comments.map((comment, key) => (
+                comment && (
+                  <div key={key} className={styles.comment}>
+                    {comment}
+                  </div>
+                )
+              ))
+            }
+          </div>
         </div>
       </div>
     </Loading>

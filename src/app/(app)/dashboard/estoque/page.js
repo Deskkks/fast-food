@@ -63,55 +63,59 @@ export default function Estoque() {
             {
               data.length > 0 && (
                 <div className={styles.conteiner}>
-                  <div className={styles.title}>
-                    <p>Mercadorias: </p>
-                    <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                      <div
-                        className={styles.button}
-                        onClick={() => {
-                          setAdicionar(true)
-                        }}
-                      >
-                        Adcionar Produto
-                      </div>
-                      <div>
-                        <MdArrowForwardIos
-                          className={mercadorias ? "arrowUp" : "arrowDown"}
+                  <div className={styles.Econteiner}>
+                    <div className={styles.title}>
+                      <p>Mercadorias: </p>
+                      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <div
+                          className={styles.button}
                           onClick={() => {
-                            setMercadorias(!mercadorias)
+                            setAdicionar(true)
                           }}
-                        />
+                        >
+                          Adcionar Produto
+                        </div>
+                        <div>
+                          <MdArrowForwardIos
+                            className={mercadorias ? "arrowUp" : "arrowDown"}
+                            onClick={() => {
+                              setMercadorias(!mercadorias)
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                    {
-                      mercadorias && (
-                        data.map((produto, key) => (
-                          produto.tipo === "produto" && (
-                            <div key={key} className={styles.contProducts}>
-                              <p>{produto.produto}</p>
-                              <div style={{display:"flex", alignItems:"center"}}>
-                                <p>{produto.quantidade}</p>
-                                <div
-                                  className={styles.button}
-                                  onClick={() => {
-                                    setEditar(true)
-                                    setValue(produto.quantidade)
-                                    setId(produto.id)
-                                  }}
-                                >
-                                  Editar
+                    <div>
+                      {
+                        mercadorias && (
+                          data.map((produto, key) => (
+                            produto.tipo === "produto" && (
+                              <div key={key} className={styles.contProducts}>
+                                <p>{produto.produto}</p>
+                                <div style={{display:"flex", alignItems:"center"}}>
+                                  <p>{produto.quantidade}</p>
+                                  <div
+                                    className={styles.button}
+                                    onClick={() => {
+                                      setEditar(true)
+                                      setValue(produto.quantidade)
+                                      setId(produto.id)
+                                    }}
+                                  >
+                                    Editar
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          )
-                        ))
-                      )
-                    }
-                  <div>
+                            )
+                          ))
+                        )
+                      }
+                    </div>
+                  </div>
+                  <div className={styles.Econteiner}>
                     <div className={styles.title}>
                       <p>Embalagens: </p>
-                      <div>
+                      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                         <MdArrowForwardIos
                           className={embalagens ? "arrowUp" : "arrowDown"}
                           onClick={() => {
@@ -120,30 +124,32 @@ export default function Estoque() {
                         />
                       </div>
                     </div>
-                    {
-                      embalagens && (
-                        data.map((produto, key) => (
-                          produto.tipo === "embalagem" && (
-                            <div key={key}  className={styles.contProducts}>
-                              <p>{produto.produto}</p>
-                              <div style={{display:"flex", alignItems:"center"}}>
-                                <p>{produto.quantidade}</p>
-                                <div
-                                  className={styles.button}
-                                  onClick={() => {
-                                    setEditar(true)
-                                    setValue(produto.quantidade)
-                                    setId(produto.id)
-                                  }}
-                                >
-                                  Editar
+                    <div>
+                      {
+                        embalagens && (
+                          data.map((produto, key) => (
+                            produto.tipo === "embalagem" && (
+                              <div key={key}  className={styles.contProducts}>
+                                <p>{produto.produto}</p>
+                                <div style={{display:"flex", alignItems:"center"}}>
+                                  <p>{produto.quantidade}</p>
+                                  <div
+                                    className={styles.button}
+                                    onClick={() => {
+                                      setEditar(true)
+                                      setValue(produto.quantidade)
+                                      setId(produto.id)
+                                    }}
+                                  >
+                                    Editar
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          )
-                        ))
-                      )
-                    }
+                            )
+                          ))
+                        )
+                      }
+                    </div>
                   </div>
                 </div>
               )

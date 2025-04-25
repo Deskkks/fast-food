@@ -11,7 +11,7 @@ export default function Cozinha({data}) {
   
   return(
     <div>
-      <div style={{display: "flex", justifyContent: "space-between", margin: "10px"}}>
+      <div className={styles.title}>
         <p>Pedidos para Fazer: </p>
         <div>
           <MdArrowForwardIos

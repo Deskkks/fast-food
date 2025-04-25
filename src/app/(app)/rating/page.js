@@ -45,12 +45,6 @@ export default function Rating() {
       pergunta: "Você recomendaria o Amburana para alguém?",
       descricao: "(considere 1 para nunca e 5 para com certeza)"
     },
-    {
-      name: "comment",
-      pergunta: "Deixe aqui suas criticas, elogios ou sugestões:",
-      descricao: "(Opcional)",
-      value: comment
-    }
   ]
   
   const [imagesArr, setImages] = useState([
@@ -187,52 +181,55 @@ export default function Rating() {
   },[imagesArr])
 
   return(
-    <Card>
+    <div className={styles.conteiner}>
       <form action={"/api/avaliacao"} method="post">
-        <div>
-          {
-            questions.map((question, questionKey) => (
+        <Card>
+          <h1>DEIXE SUA AVALIAÇÃO</h1>
+          <div className={styles.questions}>
+            {questions.map((question, questionKey) => (
               <div key={questionKey}>
                 <div>
                   <p>{question.pergunta}</p>
                   <p className={styles.desc}>{question.descricao}</p>
                 </div>
-                <div style={{display: "flex", justifyContent: "center"}}>
-                  {
-                    imagesArr[questionKey] ? (
-                      imagesArr[questionKey].Images.map((image, imageKey) => (
-                        <div key={imageKey}>
-                            <Image
-                              src={image.image}
-                              width={500}
-                              height={500}
-                              alt="estrela para avaliar nosso serviço"
-                              key={imageKey}
-                              className={styles.image}
-                              onClick={() => {
-                                updateImages(questionKey, image.id)
-                                question.setvalue(image.id)
-                              }}
-                            />
-                        </div>
-                      ))
-                    ) : (
-                      <div className={styles.comment}>
-                        <textarea
-                          onChange={(e) => setComment(e.target.value)}
-                          value={comment}
-                        />
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  {imagesArr[questionKey] && (
+                    imagesArr[questionKey].Images.map((image, imageKey) => (
+                      <div key={imageKey}>
+                        <Image
+                          src={image.image}
+                          width={500}
+                          height={500}
+                          alt="estrela para avaliar nosso serviço"
+                          key={imageKey}
+                          className={styles.image}
+                          onClick={() => {
+                            updateImages(questionKey, image.id)
+                            question.setvalue(image.id)
+                          } } />
                       </div>
-                    )
-                  }
+                    ))
+                  )}
                 </div>
-                <input type="hidden" value={question.value} name={question.name}/>
+                <input type="hidden" value={question.value} name={question.name} />
               </div>
-            ))
-          }
-        </div>
-        <Button disabled={disabled} text={"Enviar"} />
+            ))}
+          </div>
+          <div>
+            <p>Deixe aqui suas criticas, elogios ou sugestões:</p>
+            <p className={styles.desc}>(Opcional)</p>
+          </div>
+          <div className={styles.comment}>
+            <textarea
+              onChange={(e) => setComment(e.target.value)}
+              value={comment} />
+          </div>
+          <input type="hidden" value={comment} name={"comment"} />
+        </Card>
       </form>
-    </Card>
+      <div className={styles.button}>
+        <Button disabled={disabled} text={"Enviar"} />
+      </div>
+    </div>
   )
 }

@@ -8,6 +8,7 @@ import Button from "@/app/components/button/button"
 import Cookies from "js-cookie"
 import { redirect } from "next/navigation"
 import SVG from "@/app/components/svgLogo/svg"
+import Image from "next/image"
 
 export default function Menu() {
 
@@ -20,45 +21,61 @@ export default function Menu() {
 
   const produtos = [
     {
-      nome: "Ambuloco",
-      produto: "Salgado",
-      descricao: "Bolinho de milho assado com carne maluca de banana",
-      value: salgado,
-      setvalue: setSalgado
+      tipo: "Salgado",
+      produtos: [
+        {
+          nome: "Ambuloco",
+          descricao: "Bolinho de milho assado com carne maluca de banana",
+          imagem: "/starFull.png",
+          value: salgado,
+          setvalue: setSalgado
+        },
+        {
+          nome: "Bananitos",
+          descricao: "Chips crocante de banana (acompanhada de maionese de tucupi e ketchup de goiaba",
+          imagem: "/starFull.png",
+          value: salgado,
+          setvalue: setSalgado
+        },
+      ]
     },
     {
-      nome: "Bananitos",
-      produto: "Salgado",
-      descricao: "Chips crocante de banana (acompanhada de maionese de tucupi e ketchup de goiaba",
-      value: salgado,
-      setvalue: setSalgado
+      tipo: "Doce",
+      produtos: [
+        {
+          nome: "Bolo de coco molhado felpudo",
+          descricao: "Bolo molha envolto de raspas de coco",
+          imagem: "/starFull.png",
+          value: doce,
+          setvalue: setdoce
+        },
+        {
+          nome: "Bolo Cuca de Banana",
+          descricao: "Bolo macio, banana caramelizada e crocante amanteigado",
+          imagem: "/starFull.png",
+          value: doce,
+          setvalue: setdoce
+        },
+      ]
     },
     {
-      nome: "Bolo de coco molhado felpudo",
-      produto: "Doce",
-      descricao: "Bolo molha envolto de raspas de coco",
-      value: doce,
-      setvalue: setdoce
-    },
-    {
-      nome: "Bolo Cuca de Banana",
-      produto: "Doce",
-      descricao: "Bolo macio, banana caramelizada e crocante amanteigado",
-      value: doce,
-      setvalue: setdoce
-    },
-    {
-      nome: "Refrigerante",
-      produto: "Bebida",
-      value: bebida,
-      setvalue: setbebida
-    },
-    {
-      nome: "Suco",
-      produto: "Bebida",
-      value: bebida,
-      setvalue: setbebida
-    },
+      tipo: "Bebida",
+      produtos: [
+        {
+          nome: "Refrigerante",
+          produto: "Bebida",
+          value: bebida,
+          setvalue: setbebida
+        },
+        {
+          nome: "Suco",
+          produto: "Bebida",
+          value: bebida,
+          setvalue: setbebida
+        },
+      ]
+    }
+    
   ]
 
   useEffect(() => {
@@ -104,8 +121,8 @@ export default function Menu() {
 
   return(
     <div className={styles.card}>
-      <Card>
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <Card>
           <label className={styles.dignome}>
             DIGITE SEU NOME:
             <div className={styles.nome}>
@@ -116,39 +133,46 @@ export default function Menu() {
               />
             </div>
           </label>
-          {
-            produtos.map((produto, key) => (
-              <div key={key}>
-                {
-                  key % 2 === 0 && (
-                    <div className={styles.tipo}>
-                      {produto.produto}s: 
-                    </div>
-                  )
-                }
-                <div className={styles.produto}>
-                  <input
-                    type="radio"
-                    name={produto.produto}
-                    id={produto.nome}
-                    onChange={() => produto.setvalue(produto.nome)}
-                  />
-                  <label htmlFor={produto.nome}>
-                    <div className={styles.pNome}>
-                      <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
-                        <SVG/>
+          <div className={styles.conteiner}>
+            {
+              produtos.map((tipo, key) => (
+                <div key={key}>
+                  <div className={styles.tipo}>
+                    {tipo.tipo}s: 
+                  </div>
+                  {
+                    tipo.produtos.map((produto, key) =>(
+                      <div className={styles.produto} key={key}>
+                        {
+                          produto.imagem && (<Image src={produto.imagem} alt={`Imagem do ${produto.nome}`} width={150} height={150}/>)
+                        }
+                        <input
+                          type="radio"
+                          name={produto.produto}
+                          id={produto.nome}
+                          onChange={() => produto.setvalue(produto.nome)}
+                        />
+                        <label htmlFor={produto.nome}>
+                          <div className={styles.pNome}>
+                            <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                              <SVG/>
+                            </div>
+                            <p>{produto.nome}</p>
+                          </div>
+                          <div className={styles.descricao}>{produto.descricao}</div>
+                        </label>
                       </div>
-                      <p>{produto.nome}</p>
-                    </div>
-                    <div className={styles.descricao}>{produto.descricao}</div>
-                  </label>
+                    ))
+                  }
                 </div>
-              </div>
-            ))
-          }
-          <Button disabled={disabled} text={"Fazer pedido"} />
-        </form>
-      </Card>
+              ))
+            }
+          </div>
+        </Card>
+        <div className={styles.button}>
+          <Button disabled={disabled} text={"FAÇA SEU PEDIDO"} />
+        </div>
+      </form>
     </div>
   )
 }
