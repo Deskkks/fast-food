@@ -26,14 +26,14 @@ export default function Menu() {
         {
           nome: "Ambuloco",
           descricao: "Bolinho de milho assado com carne maluca de banana",
-          imagem: "/starFull.png",
+          imagem: "/ambuloco.jpeg",
           value: salgado,
           setvalue: setSalgado
         },
         {
-          nome: "Bananitos",
-          descricao: "Chips crocante de banana (acompanhada de maionese de tucupi e ketchup de goiaba",
-          imagem: "/starFull.png",
+          nome: "Aipimzitos",
+          descricao: "Chips crocante de aipim (acompanhada de maionese de tucupi e ketchup de goiaba",
+          imagem: "/aipimzitos.jpeg",
           value: salgado,
           setvalue: setSalgado
         },
@@ -45,14 +45,14 @@ export default function Menu() {
         {
           nome: "Bolo de coco molhado felpudo",
           descricao: "Bolo molha envolto de raspas de coco",
-          imagem: "/starFull.png",
+          imagem: "/ambuloco.jpeg",
           value: doce,
           setvalue: setdoce
         },
         {
           nome: "Bolo Cuca de Banana",
           descricao: "Bolo macio, banana caramelizada e crocante amanteigado",
-          imagem: "/starFull.png",
+          imagem: "/aipimzitos.jpeg",
           value: doce,
           setvalue: setdoce
         },
