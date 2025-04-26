@@ -20,13 +20,14 @@
   text-align: center;
   list-style: none;
   width: 100%;
+  font-size: 22px;
 }
 
 .navigation > div {
-  padding: 5px 0;
+  padding: 10px 0;
   width: 100%;
   border: #034d0a dotted;
-  border-width: 0 1px 1px 0;
+  border-width: 0 2px 2px 0;
   cursor: pointer;
 }
 

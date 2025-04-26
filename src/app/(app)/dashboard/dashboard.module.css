@@ -9,7 +9,7 @@
 }
 
 .conteiner::-webkit-scrollbar {
-  background-color: #aaa;
+  background-color: transparent;
   width: 10px;
 }
 

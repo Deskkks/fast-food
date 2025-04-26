@@ -63,13 +63,11 @@ export default function Menu() {
       produtos: [
         {
           nome: "Refrigerante",
-          produto: "Bebida",
           value: bebida,
           setvalue: setbebida
         },
         {
           nome: "Suco",
-          produto: "Bebida",
           value: bebida,
           setvalue: setbebida
         },
@@ -79,6 +77,7 @@ export default function Menu() {
   ]
 
   useEffect(() => {
+    console.log(salgado, doce, bebida)
     if(nome.length >=3){
       if(salgado || doce || bebida){
         setDisabled(false)
@@ -143,23 +142,32 @@ export default function Menu() {
                   {
                     tipo.produtos.map((produto, key) =>(
                       <div className={styles.produto} key={key}>
-                        {
-                          produto.imagem && (<Image src={produto.imagem} alt={`Imagem do ${produto.nome}`} width={150} height={150}/>)
-                        }
-                        <input
-                          type="radio"
-                          name={produto.produto}
-                          id={produto.nome}
-                          onChange={() => produto.setvalue(produto.nome)}
-                        />
                         <label htmlFor={produto.nome}>
-                          <div className={styles.pNome}>
-                            <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
-                              <SVG/>
+                          {
+                            produto.imagem && (
+                                <Image
+                                src={produto.imagem}
+                                alt={`Imagem do ${produto.nome}`}
+                                width={150}
+                                height={150}
+                                className={`${styles.image} ${produto.value === produto.nome ? styles.imageOn : styles.imageOff}`}    
+                              />)
+                          }
+                          <input
+                            type="radio"
+                            name={tipo.tipo}
+                            id={produto.nome}
+                            onChange={() => produto.setvalue(produto.nome)}
+                          />
+                          <div>
+                            <div className={styles.pNome}>
+                              <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                                <SVG/>
+                              </div>
+                              <p>{produto.nome}</p>
                             </div>
-                            <p>{produto.nome}</p>
+                            <div className={styles.descricao}>{produto.descricao}</div>
                           </div>
-                          <div className={styles.descricao}>{produto.descricao}</div>
                         </label>
                       </div>
                     ))

@@ -192,7 +192,7 @@ export default function Rating() {
                   <p>{question.pergunta}</p>
                   <p className={styles.desc}>{question.descricao}</p>
                 </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
                   {imagesArr[questionKey] && (
                     imagesArr[questionKey].Images.map((image, imageKey) => (
                       <div key={imageKey}>
@@ -228,7 +228,7 @@ export default function Rating() {
         </Card>
       </form>
       <div className={styles.button}>
-        <Button disabled={disabled} text={"Enviar"} />
+        <Button disabled={disabled} text={"ENVIAR"} />
       </div>
     </div>
   )

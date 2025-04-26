@@ -47,7 +47,8 @@
   }
   
   .questions > div {
-    margin: 10px 50px;
+    margin: 10px 20px;
+    width: 400px;
   }
 
   .comment {

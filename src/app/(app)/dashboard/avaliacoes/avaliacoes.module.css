@@ -19,8 +19,8 @@
   margin: 10px;
 }
 
-.avarages img {
-  margin: 5px 10px;
+.image {
+  margin: 12px 10px;
 }
 
 .comments {
@@ -56,6 +56,6 @@
   }
 
   .comments {
-    max-height: 425px;
+    max-height: 405px;
   }
 }

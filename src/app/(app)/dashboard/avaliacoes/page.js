@@ -96,7 +96,7 @@ export default function Avaliacoes() {
           </div>
           <div className={styles.avarages}>
             <div>
-              <p>Média: {rating}</p>
+              <p>Média geral: {rating}</p>
               {
                 stars[0].map((star,key) => (
                   <Image
@@ -111,7 +111,7 @@ export default function Avaliacoes() {
               }
             </div>
             <div>
-              <p>Média comida: {food}</p>
+              <p>Média da qualidade da comida: {food}</p>
               {
                 stars[1].map((star,key) => (
                   <Image
@@ -126,7 +126,7 @@ export default function Avaliacoes() {
               }
             </div>
             <div>
-              <p>Média tempo: {time}</p>
+              <p>Média do tempo de atendimento: {time}</p>
               {
                 stars[2].map((star,key) => (
                   <Image
@@ -141,7 +141,7 @@ export default function Avaliacoes() {
               }
             </div>
             <div>
-              <p>Média recomendação: {recomendation}</p>
+              <p>Média de recomendações: {recomendation}</p>
               {
                 stars[3].map((star,key) => (
                   <Image

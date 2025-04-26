@@ -2,7 +2,6 @@
   opacity: 1;
   animation: card 3s;
   font-weight: 600;
-  margin-top: 20px;
 }
 
 @keyframes card {
@@ -51,6 +50,28 @@
   display: none;
 }
 
+.image {
+  border-radius: 20px;
+
+  --c: #032A0D; /* the border color */
+  --b: 10px;    /* the border thickness*/
+  --g: -4px;     /* the gap on hover */
+  
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%,var(--c) 0;
+  background: 
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
+     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
+    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
+     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+  transition: .3s, background-position .3s .2s;
+}
+
+.imageOn {
+  --_i: 100%;
+  transition: .3s, background-size .3s .2s;
+}
+
 .svg {
   display: inline-block;
   width: 18px;
@@ -90,7 +111,7 @@
   .card{
     width: 95%;
     margin: inherit 20px;
-    height: 95%;
+    height: 100%;
   }
 
   .card form{
@@ -115,22 +136,18 @@
     border: none;
   }
 
-  .produto{
+  .produto label {
     margin-top: 10px;
     width: 100%;
     display: flex;
     align-items: center;
+    width: 450px;
   }
-
-  .produto img {
-    border-radius: 20px;
+  
+  .produto label > div{
+    margin-left: 10px;
   }
-
-  .produto label {
-    width: 300px;
-    margin: 0 10px;
-  }
-
+  
   .descricao {
     width: 250px;
   }
