@@ -1,6 +1,7 @@
 ﻿.conteiner{
   color: #032A0D;
   font-weight: 900;
+  width: 95%;
 }
 
 .conteiner h1{
@@ -22,7 +23,7 @@
 }
 
 .comment{
-  width: 90%;
+  width: 100%;
   text-align: start;
 }
 
@@ -40,6 +41,11 @@
 }
 
 @media screen and (min-width: 800px) {
+
+  .conteiner {
+    width: auto;
+  }
+
   .questions {
     display: grid;
     grid-template: 100px 100px / 50% 50%;
@@ -49,10 +55,6 @@
   .questions > div {
     margin: 10px 20px;
     width: 400px;
-  }
-
-  .comment {
-    width: 100%;
   }
 
   .button {

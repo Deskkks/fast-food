@@ -63,11 +63,13 @@ export default function Menu() {
       produtos: [
         {
           nome: "Refrigerante",
+          imagem: "/ambuloco.jpeg",
           value: bebida,
           setvalue: setbebida
         },
         {
           nome: "Suco",
+          imagem: "/aipimzitos.jpeg",
           value: bebida,
           setvalue: setbebida
         },

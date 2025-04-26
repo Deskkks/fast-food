@@ -1,11 +1,10 @@
 ﻿.conteiner{
   display: flex;
   flex-direction: column;
-  justify-content: baseline;
   width: 100%;
   background-color: transparent;
   overflow-y: scroll;
-  max-height: 465px;
+  max-height: 700px;
 }
 
 .conteiner::-webkit-scrollbar {
@@ -71,4 +70,10 @@
 
 .button:hover{
   cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+  .conteiner {
+    max-height: 465px;
+  }
 }

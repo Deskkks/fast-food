@@ -2,6 +2,7 @@
   opacity: 1;
   animation: card 3s;
   font-weight: 600;
+  width: 95%;
 }
 
 @keyframes card {
@@ -42,16 +43,28 @@
 }
 
 .produto {
-  margin: 5px 10px 0;
-  width: 280px
+  margin: 5px -5px 0;
+  width: 100%
 }
 
 .produto input[type=radio] {
   display: none;
 }
 
+.produto label{
+  display: flex;
+  align-items: center;
+}
+
+.produto label > div {
+  width: 80%;
+  margin-left: 10px;
+}
+
 .image {
   border-radius: 20px;
+  height: 50px;
+  width: 50px;
 
   --c: #032A0D; /* the border color */
   --b: 10px;    /* the border thickness*/
@@ -129,27 +142,41 @@
   .conteiner {
     display: flex;
     justify-content: space-between;
-    
+  }
+
+  .conteiner > div {
+    width: 100%;
+  }
+
+  .image {
+    width: 100px;
+    height: 100px;
   }
 
   .tipo {
     border: none;
   }
 
+  .produto{
+    margin-top: 50px;
+  }
+
   .produto label {
     margin-top: 10px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    width: 450px;
   }
   
   .produto label > div{
     margin-left: 10px;
   }
+
+  .produto p {
+    font-size: 18px;
+  }
   
   .descricao {
     width: 250px;
+    font-size: medium;
   }
 
   .button{

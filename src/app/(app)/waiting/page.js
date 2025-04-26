@@ -32,7 +32,7 @@ export default function Waiting() {
     }}>
       <Card>
         <div style={{
-          width:"350px",
+          width:"330px",
           margin:"0 auto",
           color: "#032A0D"
         }}>
