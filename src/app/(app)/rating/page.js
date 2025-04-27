@@ -226,10 +226,10 @@ export default function Rating() {
           </div>
           <input type="hidden" value={comment} name={"comment"} />
         </Card>
+        <div className={styles.button}>
+          <Button disabled={disabled} text={"ENVIAR"} />
+        </div>
       </form>
-      <div className={styles.button}>
-        <Button disabled={disabled} text={"ENVIAR"} />
-      </div>
     </div>
   )
 }
