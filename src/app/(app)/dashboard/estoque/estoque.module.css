@@ -19,12 +19,22 @@
 }
 
 .conteiner{
-  margin: 0 20px 0;
-  max-height: 450px;
+  margin: 0 10px 0 20px;
+  max-height: 430px;
+  overflow-y: scroll;
+}
+
+.conteiner::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.conteiner::-webkit-scrollbar-thumb{
+  background-color: #000;
+  border-radius: 20px;
 }
 
 .Econteiner{
-  overflow-y: scroll;
   margin: 10px 0;
 }
 
@@ -55,20 +65,17 @@
   justify-content: space-between;
   padding: 10px;
   width: 100%;
-  border-bottom: #fff 1px solid;
-}
-
-.contProducts:nth-child(even){
-  background-color: #ccc;
+  border-bottom: #000 1px solid;
 }
 
 .button{
   color: #fff;
   text-align: center;
   background-color: rgb(17, 68, 17);
-  padding: 5px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
   margin: 0 10px;
+  width: 90%;
 }
 
 .button:hover{
@@ -79,9 +86,14 @@
   .conteiner{
     display: flex;
     justify-content: space-between;
+    overflow-y: hidden;
   }
 
   .conteiner > div {
     width: 100%;
+  }
+
+  .Econteiner {
+    overflow-y: scroll;
   }
 }

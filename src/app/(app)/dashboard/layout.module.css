@@ -20,13 +20,13 @@
   list-style: none;
   width: 100%;
   font-size: 22px;
+  border-bottom: #034d0a 2px dotted;
 }
 
 .navigation > div {
   padding: 10px 0;
   width: 100%;
-  border: #034d0a dotted;
-  border-width: 0 2px 2px 0;
+  border-right: #034d0a 2px dotted;
   cursor: pointer;
 }
 

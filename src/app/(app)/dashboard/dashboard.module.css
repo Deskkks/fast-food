@@ -27,10 +27,6 @@
   margin: 10px;
 }
 
-.ContComanda:nth-child(odd){
-  background-color: #ccc;
-}
-
 .ContComanda{
   padding: 10px;
   width: 100%;
@@ -42,7 +38,7 @@
 
 .comanda{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .comanda:first-child{
@@ -61,7 +57,7 @@
 .button{
   color: #fff;
   text-align: center;
-  width: 80%;
+  width: 100%;
   background-color: rgb(17, 68, 17);
   padding: 5px 10px;
   border-radius: 5px;

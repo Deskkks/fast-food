@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
             <div style={estoque ? {backgroundColor: "#aaa"} : {backgroundColor:"#fff"}}>
               <Link href={"/dashboard/estoque"}><li>Estoque</li></Link>
             </div>
-            <div style={avalicao ? {backgroundColor: "#aaa"} : {backgroundColor:"#fff"}}>
+            <div style={avalicao ? {backgroundColor: "#aaa", borderWidth: 0} : {backgroundColor:"#fff", borderWidth: 0}}>
               <Link href={"/dashboard/avaliacoes"}><li>Avaliações</li></Link>
             </div>
           </ul>

@@ -27,6 +27,7 @@
   color: #ffffff;
   text-align: center;
   font-weight: 600;
+  width: 380px;
 }
 
 .fpedido {
@@ -51,11 +52,5 @@
 @media screen and (min-width: 800px){
   .conteiner p{
     width: 600px;
-  }
-}
-
-@media screen and (max-width: 500px){
-  .conteiner p{
-    width: 400px;
   }
 }
