@@ -10,8 +10,8 @@ datasource db {
 
 model codes {
   id        Int      @id @default(autoincrement())
-  code      String?  @db.VarChar(255)
-  connected Boolean?
+  code      String   @db.VarChar(255) @unique
+  connected Boolean  @default(false)
 }
 
 model commands {

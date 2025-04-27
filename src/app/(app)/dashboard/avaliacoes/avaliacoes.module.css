@@ -17,7 +17,7 @@
 
 .comments {
   overflow-y: scroll;
-  max-height: 265px;
+  max-height: 255px;
 }
 
 .comments::-webkit-scrollbar {

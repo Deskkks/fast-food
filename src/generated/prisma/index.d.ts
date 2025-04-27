@@ -1378,8 +1378,8 @@ export namespace Prisma {
 
   export type CodesGroupByOutputType = {
     id: number
-    code: string | null
-    connected: boolean | null
+    code: string
+    connected: boolean
     _count: CodesCountAggregateOutputType | null
     _avg: CodesAvgAggregateOutputType | null
     _sum: CodesSumAggregateOutputType | null
@@ -1422,8 +1422,8 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      code: string | null
-      connected: boolean | null
+      code: string
+      connected: boolean
     }, ExtArgs["result"]["codes"]>
     composites: {}
   }
@@ -1990,7 +1990,7 @@ export namespace Prisma {
     /**
      * The data needed to create a codes.
      */
-    data?: XOR<codesCreateInput, codesUncheckedCreateInput>
+    data: XOR<codesCreateInput, codesUncheckedCreateInput>
   }
 
   /**
@@ -6019,19 +6019,19 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const codesOrderByRelevanceFieldEnum: {
+    code: 'code'
+  };
+
+  export type codesOrderByRelevanceFieldEnum = (typeof codesOrderByRelevanceFieldEnum)[keyof typeof codesOrderByRelevanceFieldEnum]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-  export const codesOrderByRelevanceFieldEnum: {
-    code: 'code'
-  };
-
-  export type codesOrderByRelevanceFieldEnum = (typeof codesOrderByRelevanceFieldEnum)[keyof typeof codesOrderByRelevanceFieldEnum]
 
 
   export const commandsOrderByRelevanceFieldEnum: {
@@ -6106,30 +6106,30 @@ export namespace Prisma {
     OR?: codesWhereInput[]
     NOT?: codesWhereInput | codesWhereInput[]
     id?: IntFilter<"codes"> | number
-    code?: StringNullableFilter<"codes"> | string | null
-    connected?: BoolNullableFilter<"codes"> | boolean | null
+    code?: StringFilter<"codes"> | string
+    connected?: BoolFilter<"codes"> | boolean
   }
 
   export type codesOrderByWithRelationInput = {
     id?: SortOrder
-    code?: SortOrderInput | SortOrder
-    connected?: SortOrderInput | SortOrder
+    code?: SortOrder
+    connected?: SortOrder
     _relevance?: codesOrderByRelevanceInput
   }
 
   export type codesWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    code?: string
     AND?: codesWhereInput | codesWhereInput[]
     OR?: codesWhereInput[]
     NOT?: codesWhereInput | codesWhereInput[]
-    code?: StringNullableFilter<"codes"> | string | null
-    connected?: BoolNullableFilter<"codes"> | boolean | null
-  }, "id">
+    connected?: BoolFilter<"codes"> | boolean
+  }, "id" | "code">
 
   export type codesOrderByWithAggregationInput = {
     id?: SortOrder
-    code?: SortOrderInput | SortOrder
-    connected?: SortOrderInput | SortOrder
+    code?: SortOrder
+    connected?: SortOrder
     _count?: codesCountOrderByAggregateInput
     _avg?: codesAvgOrderByAggregateInput
     _max?: codesMaxOrderByAggregateInput
@@ -6142,8 +6142,8 @@ export namespace Prisma {
     OR?: codesScalarWhereWithAggregatesInput[]
     NOT?: codesScalarWhereWithAggregatesInput | codesScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"codes"> | number
-    code?: StringNullableWithAggregatesFilter<"codes"> | string | null
-    connected?: BoolNullableWithAggregatesFilter<"codes"> | boolean | null
+    code?: StringWithAggregatesFilter<"codes"> | string
+    connected?: BoolWithAggregatesFilter<"codes"> | boolean
   }
 
   export type commandsWhereInput = {
@@ -6373,42 +6373,42 @@ export namespace Prisma {
   }
 
   export type codesCreateInput = {
-    code?: string | null
-    connected?: boolean | null
+    code: string
+    connected?: boolean
   }
 
   export type codesUncheckedCreateInput = {
     id?: number
-    code?: string | null
-    connected?: boolean | null
+    code: string
+    connected?: boolean
   }
 
   export type codesUpdateInput = {
-    code?: NullableStringFieldUpdateOperationsInput | string | null
-    connected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    code?: StringFieldUpdateOperationsInput | string
+    connected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type codesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    code?: NullableStringFieldUpdateOperationsInput | string | null
-    connected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    code?: StringFieldUpdateOperationsInput | string
+    connected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type codesCreateManyInput = {
     id?: number
-    code?: string | null
-    connected?: boolean | null
+    code: string
+    connected?: boolean
   }
 
   export type codesUpdateManyMutationInput = {
-    code?: NullableStringFieldUpdateOperationsInput | string | null
-    connected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    code?: StringFieldUpdateOperationsInput | string
+    connected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type codesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    code?: NullableStringFieldUpdateOperationsInput | string | null
-    connected?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    code?: StringFieldUpdateOperationsInput | string
+    connected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type commandsCreateInput = {
@@ -6637,10 +6637,10 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -6649,17 +6649,12 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type codesOrderByRelevanceInput = {
@@ -6710,7 +6705,33 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
     notIn?: string[] | null
@@ -6722,29 +6743,18 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type OrdersListRelationFilter = {
     every?: ordersWhereInput
     some?: ordersWhereInput
     none?: ordersWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type ordersOrderByRelationAggregateInput = {
@@ -6792,12 +6802,22 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -6955,12 +6975,12 @@ export namespace Prisma {
     quantidade?: SortOrder
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -6985,8 +7005,8 @@ export namespace Prisma {
     connect?: ordersWhereUniqueInput | ordersWhereUniqueInput[]
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type ordersUpdateManyWithoutCommandsNestedInput = {
@@ -7052,10 +7072,10 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -7064,12 +7084,12 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -7099,6 +7119,47 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -7126,27 +7187,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

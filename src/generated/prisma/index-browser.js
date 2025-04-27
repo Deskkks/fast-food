@@ -160,13 +160,13 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.codesOrderByRelevanceFieldEnum = {
+  code: 'code'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
-};
-
-exports.Prisma.codesOrderByRelevanceFieldEnum = {
-  code: 'code'
 };
 
 exports.Prisma.commandsOrderByRelevanceFieldEnum = {

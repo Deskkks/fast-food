@@ -27,11 +27,11 @@
   color: #ffffff;
   text-align: center;
   font-weight: 600;
-  width: 380px;
+  width: 320px;
 }
 
 .fpedido {
-  font-size: 32px;
+  font-size: 26px;
   border: solid 1px;
   border-radius: 18px !important;
   background-color: #ffffff;
@@ -52,5 +52,9 @@
 @media screen and (min-width: 800px){
   .conteiner p{
     width: 600px;
+  }
+
+  .fpedido{
+    font-size: 32px;
   }
 }
