@@ -6,8 +6,8 @@ import { useEffect, useState } from "react"
 import Editar from "@/app/components/editar/Editar"
 import Adicionar from "@/app/components/adicionar/Adicionar"
 import { MdArrowForwardIos } from "react-icons/md";
-import { socket } from "@/socket";
 import { IoClose } from "react-icons/io5";
+import { pusherClient } from "@/pusher"
 
 export default function Estoque() {
 
@@ -41,8 +41,9 @@ export default function Estoque() {
     }, 3000);
   },[newData])
 
-  
-  socket.on("alert", (produto) => {
+  pusherClient.subscribe("amburana")
+
+  pusherClient.bind("alert", (produto) => {
     setAlert(produto)
   })
 

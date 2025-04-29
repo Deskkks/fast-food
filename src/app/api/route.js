@@ -2,9 +2,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const prisma = new PrismaClient({
-  
-})
+const prisma = new PrismaClient()
 
 export async function GET(req) {
 
@@ -35,12 +33,15 @@ export async function GET(req) {
       connected:true
     }
   })
-  .then(() => {
+  .catch((err) => {
+    console.log("negado", err)
+    redirect("/negado")
+  })
+  .then((res) => {
+    console.log("aceito", res)
     cookieStore.set("autorizado", true)
     cookieStore.set("userCode", id)
     redirect("/")
   })
-  .catch(() => redirect("/negado"))
-
-  redirect("/negado")
+  redirect('/negado')
 }

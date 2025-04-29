@@ -1,11 +1,11 @@
 ﻿"use client"
 
-import { socket } from "@/socket"
 import { useEffect, useState } from "react"
 import styles from "./dashboard.module.css"
 import Loading from "@/app/components/loading/Loading"
 import Cozinha from "@/app/components/cozinha/Cozinha"
 import Retirada from "@/app/components/retirada/Retirada"
+import { pusherClient } from "@/pusher"
 
 export default function Dashboard() {
 
@@ -48,13 +48,16 @@ export default function Dashboard() {
 
   },[cozinha, retirada])
 
-  socket.once("cozinha-data", (data) => {
+  pusherClient.subscribe("amburana")
+
+  pusherClient.bind("cozinha-data", (data) => {
     setCozinha(data)
   })
-  socket.once("retirada-data", (data) => {
+
+  pusherClient.bind("retirada-data", (data) => {
     setRetirada(data)
   })
-  
+
   return(
     <Loading loading={loading}>
       <div className={styles.conteiner}>

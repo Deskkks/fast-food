@@ -3,7 +3,7 @@
 import { useState } from "react"
 import styles from "../../(app)/dashboard/dashboard.module.css"
 import { MdArrowForwardIos } from "react-icons/md"
-import { socket } from "@/socket"
+import axios from "axios"
 
 export default function Cozinha({data}) {
 
@@ -40,14 +40,14 @@ export default function Cozinha({data}) {
                 <div>
                   <div
                     className={styles.button}
-                    onClick={() => {
-                      socket.emit("ready", comanda.userId)
+                    onClick={async() => {
+                      await axios.post("api/ready", {comanda})
                     }}
                   >Pronto</div>
                   <div
                     className={styles.button}
-                    onClick={() => {
-                      socket.emit("incorrect", comanda.userId)
+                    onClick={async() => {
+                      await socket.emit("incorrect", {comanda})
                     }}
                   >Incorreto</div>
                 </div>

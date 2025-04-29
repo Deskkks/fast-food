@@ -2290,8 +2290,8 @@ export namespace Prisma {
 
   export type CommandsGroupByOutputType = {
     id: number
-    userId: string | null
-    nome: string | null
+    userId: string
+    nome: string
     pronto: boolean
     entregue: boolean
     incorreto: boolean
@@ -2351,8 +2351,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: string | null
-      nome: string | null
+      userId: string
+      nome: string
       pronto: boolean
       entregue: boolean
       incorreto: boolean
@@ -2950,7 +2950,7 @@ export namespace Prisma {
     /**
      * The data needed to create a commands.
      */
-    data?: XOR<commandsCreateInput, commandsUncheckedCreateInput>
+    data: XOR<commandsCreateInput, commandsUncheckedCreateInput>
   }
 
   /**
@@ -6026,20 +6026,20 @@ export namespace Prisma {
   export type codesOrderByRelevanceFieldEnum = (typeof codesOrderByRelevanceFieldEnum)[keyof typeof codesOrderByRelevanceFieldEnum]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   export const commandsOrderByRelevanceFieldEnum: {
     userId: 'userId',
     nome: 'nome'
   };
 
   export type commandsOrderByRelevanceFieldEnum = (typeof commandsOrderByRelevanceFieldEnum)[keyof typeof commandsOrderByRelevanceFieldEnum]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   export const ordersOrderByRelevanceFieldEnum: {
@@ -6151,8 +6151,8 @@ export namespace Prisma {
     OR?: commandsWhereInput[]
     NOT?: commandsWhereInput | commandsWhereInput[]
     id?: IntFilter<"commands"> | number
-    userId?: StringNullableFilter<"commands"> | string | null
-    nome?: StringNullableFilter<"commands"> | string | null
+    userId?: StringFilter<"commands"> | string
+    nome?: StringFilter<"commands"> | string
     pronto?: BoolFilter<"commands"> | boolean
     entregue?: BoolFilter<"commands"> | boolean
     incorreto?: BoolFilter<"commands"> | boolean
@@ -6161,8 +6161,8 @@ export namespace Prisma {
 
   export type commandsOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrderInput | SortOrder
-    nome?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    nome?: SortOrder
     pronto?: SortOrder
     entregue?: SortOrder
     incorreto?: SortOrder
@@ -6172,21 +6172,21 @@ export namespace Prisma {
 
   export type commandsWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    userId?: string
     AND?: commandsWhereInput | commandsWhereInput[]
     OR?: commandsWhereInput[]
     NOT?: commandsWhereInput | commandsWhereInput[]
-    nome?: StringNullableFilter<"commands"> | string | null
+    userId?: StringFilter<"commands"> | string
+    nome?: StringFilter<"commands"> | string
     pronto?: BoolFilter<"commands"> | boolean
     entregue?: BoolFilter<"commands"> | boolean
     incorreto?: BoolFilter<"commands"> | boolean
     orders?: OrdersListRelationFilter
-  }, "id" | "userId">
+  }, "id">
 
   export type commandsOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrderInput | SortOrder
-    nome?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    nome?: SortOrder
     pronto?: SortOrder
     entregue?: SortOrder
     incorreto?: SortOrder
@@ -6202,8 +6202,8 @@ export namespace Prisma {
     OR?: commandsScalarWhereWithAggregatesInput[]
     NOT?: commandsScalarWhereWithAggregatesInput | commandsScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"commands"> | number
-    userId?: StringNullableWithAggregatesFilter<"commands"> | string | null
-    nome?: StringNullableWithAggregatesFilter<"commands"> | string | null
+    userId?: StringWithAggregatesFilter<"commands"> | string
+    nome?: StringWithAggregatesFilter<"commands"> | string
     pronto?: BoolWithAggregatesFilter<"commands"> | boolean
     entregue?: BoolWithAggregatesFilter<"commands"> | boolean
     incorreto?: BoolWithAggregatesFilter<"commands"> | boolean
@@ -6412,8 +6412,8 @@ export namespace Prisma {
   }
 
   export type commandsCreateInput = {
-    userId?: string | null
-    nome?: string | null
+    userId: string
+    nome: string
     pronto?: boolean
     entregue?: boolean
     incorreto?: boolean
@@ -6422,8 +6422,8 @@ export namespace Prisma {
 
   export type commandsUncheckedCreateInput = {
     id?: number
-    userId?: string | null
-    nome?: string | null
+    userId: string
+    nome: string
     pronto?: boolean
     entregue?: boolean
     incorreto?: boolean
@@ -6431,8 +6431,8 @@ export namespace Prisma {
   }
 
   export type commandsUpdateInput = {
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    nome?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     pronto?: BoolFieldUpdateOperationsInput | boolean
     entregue?: BoolFieldUpdateOperationsInput | boolean
     incorreto?: BoolFieldUpdateOperationsInput | boolean
@@ -6441,8 +6441,8 @@ export namespace Prisma {
 
   export type commandsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    nome?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     pronto?: BoolFieldUpdateOperationsInput | boolean
     entregue?: BoolFieldUpdateOperationsInput | boolean
     incorreto?: BoolFieldUpdateOperationsInput | boolean
@@ -6451,16 +6451,16 @@ export namespace Prisma {
 
   export type commandsCreateManyInput = {
     id?: number
-    userId?: string | null
-    nome?: string | null
+    userId: string
+    nome: string
     pronto?: boolean
     entregue?: boolean
     incorreto?: boolean
   }
 
   export type commandsUpdateManyMutationInput = {
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    nome?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     pronto?: BoolFieldUpdateOperationsInput | boolean
     entregue?: BoolFieldUpdateOperationsInput | boolean
     incorreto?: BoolFieldUpdateOperationsInput | boolean
@@ -6468,8 +6468,8 @@ export namespace Prisma {
 
   export type commandsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    nome?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     pronto?: BoolFieldUpdateOperationsInput | boolean
     entregue?: BoolFieldUpdateOperationsInput | boolean
     incorreto?: BoolFieldUpdateOperationsInput | boolean
@@ -6731,30 +6731,10 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type OrdersListRelationFilter = {
     every?: ordersWhereInput
     some?: ordersWhereInput
     none?: ordersWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type ordersOrderByRelationAggregateInput = {
@@ -6802,7 +6782,7 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
     notIn?: string[] | null
@@ -6814,10 +6794,7 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -6834,6 +6811,11 @@ export namespace Prisma {
   export type CommandsNullableScalarRelationFilter = {
     is?: commandsWhereInput | null
     isNot?: commandsWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type ordersOrderByRelevanceInput = {
@@ -6871,6 +6853,24 @@ export namespace Prisma {
   export type ordersSumOrderByAggregateInput = {
     id?: SortOrder
     commandId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -7005,10 +7005,6 @@ export namespace Prisma {
     connect?: ordersWhereUniqueInput | ordersWhereUniqueInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type ordersUpdateManyWithoutCommandsNestedInput = {
     create?: XOR<ordersCreateWithoutCommandsInput, ordersUncheckedCreateWithoutCommandsInput> | ordersCreateWithoutCommandsInput[] | ordersUncheckedCreateWithoutCommandsInput[]
     connectOrCreate?: ordersCreateOrConnectWithoutCommandsInput | ordersCreateOrConnectWithoutCommandsInput[]
@@ -7041,6 +7037,10 @@ export namespace Prisma {
     create?: XOR<commandsCreateWithoutOrdersInput, commandsUncheckedCreateWithoutOrdersInput>
     connectOrCreate?: commandsCreateOrConnectWithoutOrdersInput
     connect?: commandsWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type commandsUpdateOneWithoutOrdersNestedInput = {
@@ -7160,6 +7160,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -7176,17 +7187,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -7264,8 +7264,8 @@ export namespace Prisma {
   }
 
   export type commandsCreateWithoutOrdersInput = {
-    userId?: string | null
-    nome?: string | null
+    userId: string
+    nome: string
     pronto?: boolean
     entregue?: boolean
     incorreto?: boolean
@@ -7273,8 +7273,8 @@ export namespace Prisma {
 
   export type commandsUncheckedCreateWithoutOrdersInput = {
     id?: number
-    userId?: string | null
-    nome?: string | null
+    userId: string
+    nome: string
     pronto?: boolean
     entregue?: boolean
     incorreto?: boolean
@@ -7297,8 +7297,8 @@ export namespace Prisma {
   }
 
   export type commandsUpdateWithoutOrdersInput = {
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    nome?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     pronto?: BoolFieldUpdateOperationsInput | boolean
     entregue?: BoolFieldUpdateOperationsInput | boolean
     incorreto?: BoolFieldUpdateOperationsInput | boolean
@@ -7306,8 +7306,8 @@ export namespace Prisma {
 
   export type commandsUncheckedUpdateWithoutOrdersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    nome?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
     pronto?: BoolFieldUpdateOperationsInput | boolean
     entregue?: BoolFieldUpdateOperationsInput | boolean
     incorreto?: BoolFieldUpdateOperationsInput | boolean

@@ -16,16 +16,6 @@ export async function GET() {
 
 export async function POST() {
 
-  const cookieStore = await cookies()
-  const userCode = cookieStore.get("userCode").value
-
-  const update = await prisma.codes.update({
-    where: {
-      code: userCode
-    },
-    data: {
-      connected: false
-    }
-  })
+  
   return Response("success")
 }

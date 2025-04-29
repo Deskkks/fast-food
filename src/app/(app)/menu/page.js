@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react"
 import styles from "./menu.module.css"
-import { socket } from "@/socket"
 import Card from "@/app/components/card/card"
 import Button from "@/app/components/button/button"
-import Cookies from "js-cookie"
-import { redirect } from "next/navigation"
 import SVG from "@/app/components/svgLogo/svg"
 import Image from "next/image"
+import axios from "axios"
+import { redirect } from "next/navigation"
+import Cookies from "js-cookie"
 
 export default function Menu() {
 
@@ -79,14 +79,13 @@ export default function Menu() {
   ]
 
   useEffect(() => {
-    console.log(salgado, doce, bebida)
     if(nome.length >=3){
       if(salgado || doce || bebida){
         setDisabled(false)
       }
     }
   }, [salgado, doce, bebida, nome])
-
+  
   async function handleSubmit(e) {
     e.preventDefault()
     
@@ -104,20 +103,12 @@ export default function Menu() {
         tipo: "bebida"
       }
     ]
-
-    const pedido = {newOrders: newOrders, nome: nome}
-    Cookies.remove("autorizado")
-    const pedidoFeito = Cookies.get("pedido")
-    if(!pedidoFeito){
-      Cookies.set("pedido", true)
-      socket.emit("new-order", pedido)
-      redirect("/waiting")
-    } else {
-      const xhr = new XMLHttpRequest()
-      xhr.open("POST", "/api/pedido")
-      xhr.send()
-      redirect("/negado")
-    }
+    
+    const id = Cookies.get("userCode")
+    const pedido = {newOrders: newOrders, nome: nome, id: id}
+    
+    await axios.post("/api/newOrder", pedido)
+    redirect("/waiting")
   }
 
   return(

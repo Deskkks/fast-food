@@ -3,7 +3,7 @@
 import { useState } from "react"
 import styles from "../../(app)/dashboard/dashboard.module.css"
 import { MdArrowForwardIos } from "react-icons/md"
-import { socket } from "@/socket"
+import axios from "axios"
 
 export default function Retirada({data}) {
 
@@ -40,14 +40,14 @@ export default function Retirada({data}) {
                 <div>
                   <div
                     className={styles.button}
-                    onClick={() => {
-                      socket.emit("taked", comanda.userId)
+                    onClick={async () => {
+                      await axios.post("/api/taked", {comanda})
                     }}
                   >Pronto</div>
                   <div
                     className={styles.button}
-                    onClick={() => {
-                      socket.emit("incorrect", comanda.userId)
+                    onClick={async() => {
+                      await axios.post("/api/incorrect", {comanda})
                     }}
                   >Incorreto</div>
                 </div>

@@ -1,24 +1,32 @@
 ﻿"use client"
 
-import { useState } from "react"
-import { socket } from "@/socket"
+import { useEffect, useState } from "react"
 import { redirect } from "next/navigation"
 import Card from "@/app/components/card/card"
+import { pusherClient } from "@/pusher"
+import Cookies from "js-cookie"
 
 export default function Waiting() {
 
   const [ready, setReady] = useState(false)
 
-  socket.on("ready", () => {
-    setReady(true)
-  })
-  socket.on("taked", () => {
-    const xhr = new XMLHttpRequest()
-    xhr.open("POST", "/api/pedido"),
-    xhr.send()
-    
-    redirect("/rating")
-  })
+  useEffect(() => {
+    const id = Cookies.get("userCode")
+    pusherClient.subscribe("amburana")
+
+    pusherClient.bind(`${id}-ready`, () => {
+      console.log("ready")
+      setReady(true)
+    })
+
+    pusherClient.bind(`${id}-taked`, () => {
+      console.log("taked")
+      redirect("/rating")
+    })
+    return () => {
+      pusherClient.unsubscribe("amburana")
+    }
+  }, [])
 
   return(
     <div style={{
