@@ -120,6 +120,10 @@
   letter-spacing: 1px;
 }
 
+.button {
+  margin-top: 10px;
+}
+
 @media screen and (min-width: 800px){
   .card{
     width: 95%;

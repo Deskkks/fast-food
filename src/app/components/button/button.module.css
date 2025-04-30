@@ -1,5 +1,6 @@
 ﻿.button {
   display: block;
+  margin: 0 auto;
   padding: 7px 60px 7px 60px;
   background-color: #ffffff;
   color: #032A0D;
