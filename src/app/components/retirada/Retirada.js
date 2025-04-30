@@ -43,7 +43,7 @@ export default function Retirada({data}) {
                     onClick={async () => {
                       await axios.post("/api/taked", {comanda})
                     }}
-                  >Pronto</div>
+                  >Entregue</div>
                   <div
                     className={styles.button}
                     onClick={async() => {

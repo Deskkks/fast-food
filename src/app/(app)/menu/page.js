@@ -25,14 +25,14 @@ export default function Menu() {
       produtos: [
         {
           nome: "Ambuloco",
-          descricao: "Bolinho de milho assado com carne maluca de banana",
+          descricao: "Bolinho de milho assado com carne maluca de banana.",
           imagem: "/ambuloco.jpeg",
           value: salgado,
           setvalue: setSalgado
         },
         {
           nome: "Aipimzitos",
-          descricao: "Chips crocante de aipim (acompanhada de maionese de tucupi e ketchup de goiaba",
+          descricao: "Chips crocante de aipim (acompanhada de maionese de tucupi e ketchup de goiaba.",
           imagem: "/aipimzitos.jpeg",
           value: salgado,
           setvalue: setSalgado
@@ -44,14 +44,14 @@ export default function Menu() {
       produtos: [
         {
           nome: "Bolo de coco molhado felpudo",
-          descricao: "Bolo molha envolto de raspas de coco",
+          descricao: "Bolo molha envolto de raspas de coco.",
           imagem: "/ambuloco.jpeg",
           value: doce,
           setvalue: setdoce
         },
         {
           nome: "Bolo Cuca de Banana",
-          descricao: "Bolo macio, banana caramelizada e crocante amanteigado",
+          descricao: "Bolo macio, banana caramelizada e crocante amanteigado.",
           imagem: "/aipimzitos.jpeg",
           value: doce,
           setvalue: setdoce
@@ -136,16 +136,13 @@ export default function Menu() {
                     tipo.produtos.map((produto, key) =>(
                       <div className={styles.produto} key={key}>
                         <label htmlFor={produto.nome}>
-                          {
-                            produto.imagem && (
-                                <Image
-                                src={produto.imagem}
-                                alt={`Imagem do ${produto.nome}`}
-                                width={150}
-                                height={150}
-                                className={`${styles.image} ${produto.value === produto.nome ? styles.imageOn : styles.imageOff}`}    
-                              />)
-                          }
+                            <Image
+                            src={produto.imagem}
+                            alt={`Imagem do ${produto.nome}`}
+                            width={150}
+                            height={150}
+                            className={`${styles.image} ${produto.value === produto.nome ? styles.imageOn : styles.imageOff}`}    
+                          />
                           <input
                             type="radio"
                             name={tipo.tipo}
