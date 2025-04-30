@@ -41,7 +41,7 @@
 }
 
 .button {
-  margin: auto;
+  margin: 10px auto 0;
 }
 
 @media screen and (min-width: 800px) {
