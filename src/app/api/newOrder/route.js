@@ -56,8 +56,9 @@ export async function POST(request) {
         }
       })
       const data = Data(comandas)
-      console.log(create)
+      console.log(`teste ${create}`)
       pusherServer.trigger("amburana", "cozinha-data", data)
+      console.log("teste")
     }
   
     // diminuir estoque
