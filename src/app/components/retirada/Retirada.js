@@ -1,13 +1,33 @@
 ﻿"use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "../../(app)/dashboard/dashboard.module.css"
 import { MdArrowForwardIos } from "react-icons/md"
+import { BsThreeDotsVertical } from "react-icons/bs";
 import axios from "axios"
 
 export default function Retirada({data}) {
 
   const [entregar, setEntregar] = useState(false)
+  const [incorrects, setIncorrects] = useState([])
+    
+    useEffect(() => {
+      data.map((comanda, key) => {
+        incorrects.push(false)
+        console.log(incorrects)
+      })
+    }, [])
+  
+    function updateIncorrects(incorrectKey) {
+      const newIncorrects = incorrects.map((incorrect, key) => {
+        if(incorrectKey === key){
+          return !incorrect
+        }
+        return incorrect
+      })
+  
+      setIncorrects(newIncorrects)
+    }
   
   return(
     <div>
@@ -37,19 +57,25 @@ export default function Retirada({data}) {
                 <div className={styles.pedido}>
                   <p>{comanda.bebida}</p>
                 </div>
-                <div>
-                  <div
-                    className={styles.button}
-                    onClick={async () => {
-                      await axios.post("/api/taked", {comanda})
-                    }}
-                  >Entregue</div>
-                  <div
-                    className={styles.button}
-                    onClick={async() => {
-                      await axios.post("/api/incorrect", {comanda})
-                    }}
-                  >Incorreto</div>
+                <div
+                  className={styles.button}
+                  onClick={async () => {
+                    await axios.post("/api/taked", {comanda})
+                  }}
+                >Entregue</div>
+                <div onClick={() => updateIncorrects(key)} className={styles.conteinerIncorrect}>
+                  <BsThreeDotsVertical />
+                  {
+                    incorrects[key] && (
+                      <div className={styles.incorrect}>
+                        <div
+                          onClick={async() => {
+                            await axios.post("/api/incorrect", {comanda})
+                          }}
+                        >Incorreto</div>
+                      </div>
+                    )
+                  }
                 </div>
               </div>
             </div>
