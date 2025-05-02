@@ -12,10 +12,11 @@ export default function Cozinha({data}) {
   const [incorrects, setIncorrects] = useState([])
   
   useEffect(() => {
+    const dataIncorrects = []
     data.map((comanda, key) => {
-      incorrects.push(false)
-      console.log(incorrects)
+      dataIncorrects.push(false)
     })
+    setIncorrects(dataIncorrects)
   }, [])
 
   function updateIncorrects(incorrectKey) {
@@ -25,6 +26,7 @@ export default function Cozinha({data}) {
       }
       return incorrect
     })
+    console.log(newIncorrects)
 
     setIncorrects(newIncorrects)
   }
