@@ -3,6 +3,7 @@ import Data from "../pedido/data.js";
 import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers.js";
 import { redirect } from "next/navigation.js";
+import { NextResponse } from "next/server.js";
 
 const prisma = new PrismaClient()
 
@@ -94,6 +95,7 @@ export async function POST(request) {
       //   })
       // })
     })
+    return NextResponse.redirect(new URL("/waiting", request.url))
   } else {
     const userCode = cookieStore.get("userCode").value
     
@@ -105,8 +107,6 @@ export async function POST(request) {
         connected: false
       }
     })
-    redirect("/negado")
+    return NextResponse.redirect(new URL("/negado", request.url))
   }
-  
-  redirect("/waiting")
 }
