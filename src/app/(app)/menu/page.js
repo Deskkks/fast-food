@@ -108,7 +108,12 @@ export default function Menu() {
     const pedido = {newOrders: newOrders, nome: nome, id: id}
     
     await axios.post("/api/newOrder", pedido)
-    redirect("/waiting")
+    .then((res) => {
+      redirect("/waiting")
+    })
+    .catch((err) => {
+      redirect("/negado")
+    })
   }
 
   return(

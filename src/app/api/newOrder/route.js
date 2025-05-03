@@ -105,8 +105,12 @@ export async function POST(request) {
         connected: false
       }
     })
-    redirect("/negado")
+    return new Response("fail", {
+      status: 400
+    })
   }
   
-  return new Response("sucesso")
+  return new Response("sucesso", {
+    status: 200
+  })
 }
