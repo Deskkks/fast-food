@@ -107,13 +107,7 @@ export default function Menu() {
     const id = Cookies.get("userCode")
     const pedido = {newOrders: newOrders, nome: nome, id: id}
     
-    await axios.post("/api/newOrder", pedido)
-    .then((res) => {
-      redirect("/waiting")
-    })
-    .catch((err) => {
-      redirect("/negado")
-    })
+    axios.post("/api/newOrder", pedido)
   }
 
   return(
