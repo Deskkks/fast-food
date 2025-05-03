@@ -95,7 +95,7 @@ export async function POST(request) {
       //   })
       // })
     })
-    return NextResponse.redirect(new URL("https://www.amburana.space/waiting", request.url))
+    return Response.redirect(new URL("https://www.amburana.space/waiting", request.url))
   } else {
     const userCode = cookieStore.get("userCode").value
     
@@ -107,6 +107,6 @@ export async function POST(request) {
         connected: false
       }
     })
-    return NextResponse.redirect(new URL("https://www.amburana.space/negado", request.url))
+    return Response.redirect(new URL("https://www.amburana.space/negado", request.url))
   }
 }
