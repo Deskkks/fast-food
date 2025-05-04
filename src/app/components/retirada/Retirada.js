@@ -11,24 +11,28 @@ export default function Retirada({data}) {
   const [entregar, setEntregar] = useState(false)
   const [incorrects, setIncorrects] = useState([])
     
-    useEffect(() => {
-      const dataIncorrects = []
-      data.map((comanda, key) => {
-        dataIncorrects.push(false)
-      })
-      setIncorrects(dataIncorrects)
-    }, [])
-  
-    function updateIncorrects(incorrectKey) {
-      const newIncorrects = incorrects.map((incorrect, key) => {
-        if(incorrectKey === key){
-          return !incorrect
-        }
-        return incorrect
-      })
-      console.log(incorrects)
-      setIncorrects(newIncorrects)
-    }
+  useEffect(() => {
+    const dataIncorrects = []
+    data.map((comanda, key) => {
+      dataIncorrects.push(false)
+    })
+    setIncorrects(dataIncorrects)
+  }, [])
+
+  // useEffect(() => {
+  //   updateIncorrects()
+  // }, [data])
+
+  function updateIncorrects(incorrectKey) {
+    const newIncorrects = incorrects.map((incorrect, key) => {
+      if(incorrectKey === key){
+        return !incorrect
+      }
+      return incorrect
+    })
+    console.log(incorrects)
+    setIncorrects(newIncorrects)
+  }
   
   return(
     <div>

@@ -48,6 +48,14 @@
   margin-top: 20px;
 }
 
+.comanda > div {
+  width: calc(25%);
+}
+
+.comanda > div:nth-child(5) {
+  width: fit-content;
+}
+
 .button{
   color: #fff;
   text-align: center;
@@ -63,11 +71,13 @@
 
 .conteinerIncorrect{
   position: relative;
+  display: flex;
+  justify-content: end;
 }
 
 .incorrect {
   position: absolute;
-  bottom: -20px;
+  bottom: -30px;
   left: -70px;
 }
 

@@ -19,6 +19,10 @@ export default function Cozinha({data}) {
     setIncorrects(dataIncorrects)
   }, [])
 
+  // useEffect(() => {
+  //   updateIncorrects()
+  // }, [data])
+
   function updateIncorrects(incorrectKey) {
     const newIncorrects = incorrects.map((incorrect, key) => {
       if(incorrectKey === key){

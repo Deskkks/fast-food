@@ -1,16 +1,14 @@
-﻿import { pusherServer } from "@/pusher.js";
+﻿"use server"
+
+import { pusherServer } from "@/pusher.js";
 import Data from "../pedido/data.js";
 import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers.js";
-import { redirect } from "next/navigation.js";
-import { NextResponse } from "next/server.js";
+import { redirect, RedirectType } from "next/navigation.js";
 
 const prisma = new PrismaClient()
 
-export async function POST(request) {
-
-  const pedido = await request.json()
-  console.log(pedido) 
+export async function newOrder(pedido) {
 
   const cookieStore = await cookies()
   cookieStore.delete("autorizado")
@@ -70,7 +68,6 @@ export async function POST(request) {
             produto: newOrder.produto
           }
         })
-        console.log(produto)
         if(produto && produto.quantidade > 0 ){
           let novaQuantidade = produto.quantidade-1
           if(novaQuantidade <= limite){
@@ -95,7 +92,8 @@ export async function POST(request) {
       //   })
       // })
     })
-    return Response.redirect(new URL("https://www.amburana.space/waiting", request.url))
+    console.log("sucesso")
+    redirect("/waiting")
   } else {
     const userCode = cookieStore.get("userCode").value
     
@@ -107,6 +105,7 @@ export async function POST(request) {
         connected: false
       }
     })
-    return Response.redirect(new URL("https://www.amburana.space/negado", request.url))
+    console.log("falho")
+    redirect("/negado")
   }
 }

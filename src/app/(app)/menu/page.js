@@ -7,8 +7,8 @@ import Button from "@/app/components/button/button"
 import SVG from "@/app/components/svgLogo/svg"
 import Image from "next/image"
 import axios from "axios"
-import { redirect } from "next/navigation"
 import Cookies from "js-cookie"
+import { newOrder } from "@/app/api/newOrder/action"
 
 export default function Menu() {
 
@@ -107,7 +107,8 @@ export default function Menu() {
     const id = Cookies.get("userCode")
     const pedido = {newOrders: newOrders, nome: nome, id: id}
     
-    axios.post("/api/newOrder", pedido)
+    newOrder(pedido)
+    // axios.post("/api/newOrder", pedido)
   }
 
   return(
