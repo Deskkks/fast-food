@@ -107,4 +107,8 @@ export async function POST(request) {
     console.log("falho")
     pusherServer.trigger("amburana", "nerOrderF", "data")
   }
+
+  return new Response("succes", {
+    status: 500
+  })
 }
