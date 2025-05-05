@@ -2,7 +2,7 @@
 import Data from "../pedido/data.js";
 import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers.js";
-import { redirect, RedirectType } from "next/navigation.js";
+import { redirect } from "next/navigation.js";
 
 const prisma = new PrismaClient()
 
@@ -93,7 +93,7 @@ export async function POST(request) {
       // })
     })
     console.log("sucesso")
-    pusherServer.trigger("Amburana", "newOrderS", "data")
+    redirect("/waiting")
   } else {
     const userCode = cookieStore.get("userCode").value
     
@@ -106,10 +106,6 @@ export async function POST(request) {
       }
     })
     console.log("falho")
-    pusherServer.trigger("Amburana", "newOrderF", "data")
+    redirect("/negado")
   }
-
-  return new Response("succes", {
-    status: 200
-  })
 }

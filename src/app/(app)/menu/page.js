@@ -111,24 +111,6 @@ export default function Menu() {
     axios.post("/api/newOrder", pedido)
   }
 
-  useEffect(() => {
-    pusherClient.subscribe("Amburana")
-    
-    pusherClient.bind("newOrderS", () => {
-      console.log("sucesso")
-      redirect("/waiting")
-    })
-  
-    pusherClient.bind("newOrderF", () => {
-      console.log("fail")
-      redirect("/negado")
-    })
-
-    return () => {
-      pusherClient.unsubscribe("Amburana")
-    }
-  })
-
   return(
     <div className={styles.card}>
       <form onSubmit={handleSubmit}>
