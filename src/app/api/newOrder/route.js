@@ -1,6 +1,4 @@
-﻿"use server"
-
-import { pusherServer } from "@/pusher.js";
+﻿import { pusherServer } from "@/pusher.js";
 import Data from "../pedido/data.js";
 import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers.js";
@@ -8,7 +6,10 @@ import { redirect, RedirectType } from "next/navigation.js";
 
 const prisma = new PrismaClient()
 
-export async function newOrder(pedido) {
+export async function POST(request) {
+
+  const pedido = await request.json()
+  console.log(pedido) 
 
   const cookieStore = await cookies()
   cookieStore.delete("autorizado")
@@ -28,7 +29,6 @@ export async function newOrder(pedido) {
         quantidadeOrders++
       }
     })
-  
   
     if(quantidadeOrders > 0){
   
@@ -92,8 +92,7 @@ export async function newOrder(pedido) {
       //   })
       // })
     })
-    console.log("sucesso")
-    redirect("/waiting")
+    pusherServer.trigger("amburana", "nerOrderS", "data")
   } else {
     const userCode = cookieStore.get("userCode").value
     
@@ -106,6 +105,6 @@ export async function newOrder(pedido) {
       }
     })
     console.log("falho")
-    redirect("/negado")
+    pusherServer.trigger("amburana", "nerOrderF", "data")
   }
 }

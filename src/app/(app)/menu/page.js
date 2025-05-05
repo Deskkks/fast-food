@@ -8,7 +8,8 @@ import SVG from "@/app/components/svgLogo/svg"
 import Image from "next/image"
 import axios from "axios"
 import Cookies from "js-cookie"
-import { newOrder } from "@/app/api/newOrder/action"
+import { redirect } from "next/navigation"
+import { pusherClient } from "@/pusher"
 
 export default function Menu() {
 
@@ -107,9 +108,18 @@ export default function Menu() {
     const id = Cookies.get("userCode")
     const pedido = {newOrders: newOrders, nome: nome, id: id}
     
-    newOrder(pedido)
-    // axios.post("/api/newOrder", pedido)
+    axios.post("/api/newOrder", pedido)
   }
+
+  pusherClient.subscribe("amburana")
+  
+  pusherClient.bind("nerOrderS", () => {
+    redirect("/waiting")
+  })
+
+  pusherClient.bind("nerOrderF", () => {
+    redirect("/negado")
+  })
 
   return(
     <div className={styles.card}>
