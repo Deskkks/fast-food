@@ -92,7 +92,8 @@ export async function POST(request) {
       //   })
       // })
     })
-    pusherServer.trigger("amburana", "nerOrderS", "data")
+    console.log("sucesso")
+    pusherServer.trigger("amburana", "newOrderS", "data")
   } else {
     const userCode = cookieStore.get("userCode").value
     
@@ -105,7 +106,7 @@ export async function POST(request) {
       }
     })
     console.log("falho")
-    pusherServer.trigger("amburana", "nerOrderF", "data")
+    pusherServer.trigger("amburana", "newOrderF", "data")
   }
 
   return new Response("succes", {
