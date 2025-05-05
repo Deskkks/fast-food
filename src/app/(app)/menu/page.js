@@ -114,10 +114,12 @@ export default function Menu() {
   pusherClient.subscribe("amburana")
   
   pusherClient.bind("nerOrderS", () => {
+    console.log("sucesso")
     redirect("/waiting")
   })
 
   pusherClient.bind("nerOrderF", () => {
+    console.log("fail")
     redirect("/negado")
   })
 
