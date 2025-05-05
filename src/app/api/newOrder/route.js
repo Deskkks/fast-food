@@ -109,6 +109,6 @@ export async function POST(request) {
   }
 
   return new Response("succes", {
-    status: 500
+    status: 200
   })
 }
