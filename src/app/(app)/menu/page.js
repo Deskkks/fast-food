@@ -112,7 +112,7 @@ export default function Menu() {
   }
 
   useEffect(() => {
-    pusherClient.subscribe("amburana")
+    pusherClient.subscribe("Amburana")
     
     pusherClient.bind("newOrderS", () => {
       console.log("sucesso")
@@ -125,7 +125,7 @@ export default function Menu() {
     })
 
     return () => {
-      pusherClient.unsubscribe("amburana")
+      pusherClient.unsubscribe("Amburana")
     }
   })
 
