@@ -111,16 +111,22 @@ export default function Menu() {
     axios.post("/api/newOrder", pedido)
   }
 
-  pusherClient.subscribe("amburana")
+  useEffect(() => {
+    pusherClient.subscribe("amburana")
+    
+    pusherClient.bind("newOrderS", () => {
+      console.log("sucesso")
+      redirect("/waiting")
+    })
   
-  pusherClient.bind("newOrderS", () => {
-    console.log("sucesso")
-    redirect("/waiting")
-  })
+    pusherClient.bind("newOrderF", () => {
+      console.log("fail")
+      redirect("/negado")
+    })
 
-  pusherClient.bind("newOrderF", () => {
-    console.log("fail")
-    redirect("/negado")
+    return () => {
+      pusherClient.unsubscribe("amburana")
+    }
   })
 
   return(
