@@ -44,16 +44,16 @@ export default function Menu() {
       tipo: "Doce",
       produtos: [
         {
-          nome: "Bolo de coco molhado felpudo",
+          nome: "Ambucoco",
           descricao: "Bolo molha envolto de raspas de coco.",
-          imagem: "/ambuloco.jpeg",
+          imagem: "/ambucoco.jpeg",
           value: doce,
           setvalue: setdoce
         },
         {
-          nome: "Bolo Cuca de Banana",
+          nome: "Ambucuca",
           descricao: "Bolo macio, banana caramelizada e crocante amanteigado.",
-          imagem: "/aipimzitos.jpeg",
+          imagem: "/ambucuca.jpeg",
           value: doce,
           setvalue: setdoce
         },
@@ -63,14 +63,14 @@ export default function Menu() {
       tipo: "Bebida",
       produtos: [
         {
-          nome: "Refrigerante",
-          imagem: "/ambuloco.jpeg",
+          nome: "Suco de laranja",
+          imagem: "/laranja.jpeg",
           value: bebida,
           setvalue: setbebida
         },
         {
-          nome: "Suco",
-          imagem: "/aipimzitos.jpeg",
+          nome: "Suco de limão",
+          imagem: "/limao.jpeg",
           value: bebida,
           setvalue: setbebida
         },

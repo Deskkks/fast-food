@@ -18,10 +18,16 @@ export async function GET(req) {
     redirect("/dashboard")
   }
   
-  if(id === "5"){
+  if(id === "oP8q4dzAE5Wakthh2n4694"){
     cookieStore.set("autorizado", true)
     cookieStore.delete("pedido")
-    redirect("/menu")
+    redirect("/")
+  }
+
+  if(id === "5"){
+    cookieStore.delete("autorizado")
+    cookieStore.delete("pedido")
+    redirect("/")
   }
   
   const update = await prisma.codes.update({
