@@ -86,6 +86,24 @@ export default function Menu() {
       }
     }
   }, [salgado, doce, bebida, nome])
+
+  useEffect(() => {
+    const id = Cookies.get("userCode")
+    pusherClient.subscribe("amburana")
+
+    pusherClient.bind(`${id}-orderS`, () => {
+      console.log("ready")
+      redirect("/waiting")
+    })
+
+    pusherClient.bind(`${id}-orderF`, () => {
+      console.log("taked")
+      redirect("/negado")
+    })
+    return () => {
+      pusherClient.unsubscribe("amburana")
+    }
+  }, [])
   
   async function handleSubmit(e) {
     e.preventDefault()
