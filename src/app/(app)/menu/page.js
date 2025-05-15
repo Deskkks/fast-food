@@ -32,8 +32,8 @@ export default function Menu() {
           setvalue: setSalgado
         },
         {
-          nome: "Aipimzitos",
-          descricao: "Chips crocante de aipim (acompanhada de maionese de tucupi e ketchup de goiaba.",
+          nome: "Mandioquitos",
+          descricao: " chips de mandioca servidos com maionese de tucupi e ketchup de goiaba.",
           imagem: "/aipimzitos.jpeg",
           value: salgado,
           setvalue: setSalgado
@@ -45,14 +45,14 @@ export default function Menu() {
       produtos: [
         {
           nome: "Ambucoco",
-          descricao: "Bolo molha envolto de raspas de coco.",
+          descricao: "bolo molhado com raspas de coco",
           imagem: "/ambucoco.jpeg",
           value: doce,
           setvalue: setdoce
         },
         {
           nome: "Ambucuca",
-          descricao: "Bolo macio, banana caramelizada e crocante amanteigado.",
+          descricao: "bolo de banana caramelizada crocante amanteigado",
           imagem: "/ambucuca.jpeg",
           value: doce,
           setvalue: setdoce

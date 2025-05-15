@@ -20,6 +20,7 @@ export async function GET(req) {
   
   if(id === "oP8q4dzAE5Wakthh2n4694"){
     cookieStore.set("autorizado", true)
+    cookieStore.set("userCode", id)
     cookieStore.delete("pedido")
     redirect("/")
   }
