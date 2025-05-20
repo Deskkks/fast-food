@@ -2,8 +2,6 @@
 import Data from "../pedido/data.js";
 import { PrismaClient } from "@/generated/prisma";
 import { cookies } from "next/headers.js";
-import { redirect } from "next/navigation.js";
-import { NextResponse } from "next/server.js";
 
 const prisma = new PrismaClient()
 
@@ -22,7 +20,7 @@ export async function POST(request) {
     cookieStore.set("pedido", true)
 
     let quantidadeOrders = 0
-    let limite = 5
+    let limite = 10
   
     // criar comanda
     pedido.newOrders.map(newOrder => {
@@ -56,7 +54,6 @@ export async function POST(request) {
         }
       })
       const data = Data(comandas)
-      console.log(data)
       pusherServer.trigger("amburana", "cozinha-data", data)
     }
   
@@ -72,6 +69,7 @@ export async function POST(request) {
         if(produto && produto.quantidade > 0 ){
           let novaQuantidade = produto.quantidade-1
           if(novaQuantidade <= limite){
+            console.log(`${produto.produto} está acabando`)
             pusherServer.trigger("amburana", "alert", produto.produto)
           }
           const update = await prisma.stocks.update({
@@ -93,7 +91,6 @@ export async function POST(request) {
       //   })
       // })
     })
-    console.log("sucesso")
     pusherServer.trigger("amburana", `${pedido.id}-orderS`, "data")
     return new Response(JSON.stringify(200))
   } else {
@@ -107,7 +104,6 @@ export async function POST(request) {
         connected: false
       }
     })
-    console.log("falho")
     pusherServer.trigger("amburana", `${pedido.id}-orderF`, "data")
     return new Response(JSON.stringify(400))
 

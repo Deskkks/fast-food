@@ -13,15 +13,13 @@ export default function Retirada({data}) {
     
   useEffect(() => {
     const dataIncorrects = []
+
     data.map((comanda, key) => {
       dataIncorrects.push(false)
     })
+    console.log(data.length)
     setIncorrects(dataIncorrects)
-  }, [])
-
-  // useEffect(() => {
-  //   updateIncorrects()
-  // }, [data])
+  }, [data])
 
   function updateIncorrects(incorrectKey) {
     const newIncorrects = incorrects.map((incorrect, key) => {

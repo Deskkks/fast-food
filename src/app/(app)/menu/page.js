@@ -33,7 +33,7 @@ export default function Menu() {
         },
         {
           nome: "Mandioquitos",
-          descricao: " chips de mandioca servidos com maionese de tucupi e ketchup de goiaba.",
+          descricao: " chips de mandioca servidos com maionese de tucupi e ketchup de goiabada.",
           imagem: "/aipimzitos.jpeg",
           value: salgado,
           setvalue: setSalgado
