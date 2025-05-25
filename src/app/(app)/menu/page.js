@@ -32,8 +32,8 @@ export default function Menu() {
           setvalue: setSalgado
         },
         {
-          nome: "Aipimzitos",
-          descricao: "Chips crocante de aipim (acompanhada de maionese de tucupi e ketchup de goiaba.",
+          nome: "Mandioquitos",
+          descricao: " chips de mandioca servidos com maionese de tucupi e ketchup de goiabada.",
           imagem: "/aipimzitos.jpeg",
           value: salgado,
           setvalue: setSalgado
@@ -44,16 +44,16 @@ export default function Menu() {
       tipo: "Doce",
       produtos: [
         {
-          nome: "Bolo de coco molhado felpudo",
-          descricao: "Bolo molha envolto de raspas de coco.",
-          imagem: "/ambuloco.jpeg",
+          nome: "Ambucoco",
+          descricao: "bolo molhado com raspas de coco",
+          imagem: "/ambucoco.jpeg",
           value: doce,
           setvalue: setdoce
         },
         {
-          nome: "Bolo Cuca de Banana",
-          descricao: "Bolo macio, banana caramelizada e crocante amanteigado.",
-          imagem: "/aipimzitos.jpeg",
+          nome: "Ambucuca",
+          descricao: "bolo de banana caramelizada crocante amanteigado",
+          imagem: "/ambucuca.jpeg",
           value: doce,
           setvalue: setdoce
         },
@@ -63,14 +63,14 @@ export default function Menu() {
       tipo: "Bebida",
       produtos: [
         {
-          nome: "Refrigerante",
-          imagem: "/ambuloco.jpeg",
+          nome: "Suco de laranja",
+          imagem: "/laranja.jpeg",
           value: bebida,
           setvalue: setbebida
         },
         {
-          nome: "Suco",
-          imagem: "/aipimzitos.jpeg",
+          nome: "Suco de limão",
+          imagem: "/limao.jpeg",
           value: bebida,
           setvalue: setbebida
         },
@@ -86,6 +86,24 @@ export default function Menu() {
       }
     }
   }, [salgado, doce, bebida, nome])
+
+  useEffect(() => {
+    const id = Cookies.get("userCode")
+    pusherClient.subscribe("amburana")
+
+    pusherClient.bind(`${id}-orderS`, () => {
+      console.log("ready")
+      redirect("/waiting")
+    })
+
+    pusherClient.bind(`${id}-orderF`, () => {
+      console.log("taked")
+      redirect("/negado")
+    })
+    return () => {
+      pusherClient.unsubscribe("amburana")
+    }
+  }, [])
   
   async function handleSubmit(e) {
     e.preventDefault()

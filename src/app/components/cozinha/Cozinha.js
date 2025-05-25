@@ -10,18 +10,15 @@ export default function Cozinha({data}) {
 
   const [fazer, setFazer] = useState(false)
   const [incorrects, setIncorrects] = useState([])
-  
+
   useEffect(() => {
     const dataIncorrects = []
     data.map((comanda, key) => {
       dataIncorrects.push(false)
     })
     setIncorrects(dataIncorrects)
-  }, [])
 
-  // useEffect(() => {
-  //   updateIncorrects()
-  // }, [data])
+  }, [data])
 
   function updateIncorrects(incorrectKey) {
     const newIncorrects = incorrects.map((incorrect, key) => {

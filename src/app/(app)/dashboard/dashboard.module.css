@@ -72,7 +72,6 @@
 .conteinerIncorrect{
   position: relative;
   display: flex;
-  justify-content: end;
 }
 
 .incorrect {
