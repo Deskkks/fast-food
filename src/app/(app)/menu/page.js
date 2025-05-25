@@ -107,8 +107,11 @@ export default function Menu() {
     
     const id = Cookies.get("userCode")
     const pedido = {newOrders: newOrders, nome: nome, id: id}
-    
-    axios.post("/api/newOrder", pedido)
+    const pedidoFeito = Cookies.get("pedido")
+    if(!pedidoFeito){
+      Cookies.set("pedido", true)
+      axios.post("/api/newOrder", pedido)
+    }
   }
 
   return(

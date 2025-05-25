@@ -14,11 +14,7 @@ export async function POST(request) {
   const cookieStore = await cookies()
   cookieStore.delete("autorizado")
 
-  const pedidoFeito = cookieStore.has("pedido")
 
-  if(!pedidoFeito){
-
-    cookieStore.set("pedido", true)
 
     let quantidadeOrders = 0
     let limite = 5
@@ -94,18 +90,4 @@ export async function POST(request) {
     })
     console.log("sucesso")
     redirect("/waiting")
-  } else {
-    const userCode = cookieStore.get("userCode").value
-    
-    const update = await prisma.codes.update({
-      where: {
-        code: userCode
-      },
-      data: {
-        connected: false
-      }
-    })
-    console.log("falho")
-    redirect("/negado")
-  }
 }
