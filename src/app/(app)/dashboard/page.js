@@ -16,6 +16,7 @@ export default function Dashboard() {
   function getDatas() {
     fetch("/api/pedido/retirada")
     .then(res => {
+      console.log(res)
       res.json()
       .then(data => {
         setRetirada(data)

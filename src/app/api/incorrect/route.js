@@ -4,7 +4,6 @@ import Data from "../pedido/data";
 
 const prisma = new PrismaClient()
 
-
 export async function POST({req}) {
   pusherServer.sendToUser(req.id, "ready")
 

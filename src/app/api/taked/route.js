@@ -9,20 +9,17 @@ export async function POST(req) {
   const {comanda} = await req.json()
   const id = comanda.userId
 
-  console.log(`${comanda.json()} entregue`)
   pusherServer.trigger("amburana", `${id}-taked`, "teste")
   
-  if(id !== "oP8q4dzAE5Wakthh2n4694") {
-    const update = await prisma.commands.updateMany({
-      where: {
-        userId: id,
-        entregue: false
-      },
-      data: {
-        entregue: true
-      }
-    })
-  }
+  const update = await prisma.commands.updateMany({
+    where: {
+      userId: id,
+      entregue: false
+    },
+    data: {
+      entregue: true
+    }
+  })
 
   const retiradaComandas = await prisma.commands.findMany({
     include: {
@@ -35,7 +32,7 @@ export async function POST(req) {
   })
 
   
-  const retiradaData = Data(retiradaComandas)
+  const retiradaData = await Data(retiradaComandas)
   pusherServer.trigger("amburana", "retirada-data", retiradaData)
   
   const updateCode = await prisma.codes.update({

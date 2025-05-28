@@ -49,7 +49,7 @@ export async function POST(request) {
           pronto: false
         }
       })
-      const data = Data(comandas)
+      const data = await Data(comandas)
       pusherServer.trigger("amburana", "cozinha-data", data)
     }
   

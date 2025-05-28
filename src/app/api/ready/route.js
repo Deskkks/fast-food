@@ -38,8 +38,8 @@ export async function POST(req) {
     }
   })
 
-  const cozinhaData = Data(cozinhaComandas)
-  const retiradaData = Data(retiradaComandas)
+  const cozinhaData = await Data(cozinhaComandas)
+  const retiradaData = await Data(retiradaComandas)
 
   pusherServer.trigger("amburana", "cozinha-data", cozinhaData)
   pusherServer.trigger("amburana", "retirada-data", retiradaData)

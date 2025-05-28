@@ -1,9 +1,9 @@
 ﻿import { PrismaClient } from "@/generated/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function POST(req) {
+const prisma = new PrismaClient()
 
-  const prisma = new PrismaClient()
+export async function POST(req) {
 
   const formData = await req.json()
   const produto = formData.produto

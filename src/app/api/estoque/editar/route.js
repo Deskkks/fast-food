@@ -1,9 +1,8 @@
 ﻿import { PrismaClient } from "@/generated/prisma"
 
+const prisma = new PrismaClient()
+
 export async function POST(req){
-
-  const prisma = new PrismaClient()
-
   const request = await req.json()
   const Id = request.id
   const newValue = request.value

@@ -32,8 +32,12 @@
   width: 100%;
 }
 
-.ContComanda > p {
+.comandaInfos {
   border-bottom: #000 1px solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 0 15px; 
 }
 
 .comanda{

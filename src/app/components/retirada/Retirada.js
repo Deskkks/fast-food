@@ -17,7 +17,6 @@ export default function Retirada({data}) {
     data.map((comanda, key) => {
       dataIncorrects.push(false)
     })
-    console.log(data.length)
     setIncorrects(dataIncorrects)
   }, [data])
 
@@ -49,7 +48,10 @@ export default function Retirada({data}) {
         entregar && (
           data.map((comanda, key) => (
             <div key={key} className={styles.ContComanda}>
-              <p>{comanda.nome}</p>
+              <div className={styles.comandaInfos}>
+                <p>{comanda.nome}</p>
+                <p>{comanda.id}</p>
+              </div>
               <div className={styles.comanda}>
                 <div className={styles.pedido}>
                   <p>{comanda.salgado}</p>

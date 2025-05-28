@@ -12,6 +12,7 @@ export default function Cozinha({data}) {
   const [incorrects, setIncorrects] = useState([])
 
   useEffect(() => {
+
     const dataIncorrects = []
     data.map((comanda, key) => {
       dataIncorrects.push(false)
@@ -49,7 +50,10 @@ export default function Cozinha({data}) {
         fazer && (
           data.map((comanda, key) => (
             <div key={key} className={styles.ContComanda}>
-              <p>{comanda.nome}</p>
+              <div className={styles.comandaInfos}>
+                <p>{comanda.nome}</p>
+                <p>{comanda.id}</p>
+              </div>
               <div className={styles.comanda}>
                 <div>
                   <p>{comanda.salgado}</p>

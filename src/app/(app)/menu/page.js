@@ -63,14 +63,14 @@ export default function Menu() {
       tipo: "Bebida",
       produtos: [
         {
-          nome: "Suco de laranja",
-          imagem: "/laranja.jpeg",
+          nome: "Suco de abacaxi",
+          imagem: "/abacaxi.jpg",
           value: bebida,
           setvalue: setbebida
         },
         {
-          nome: "Suco de limão",
-          imagem: "/limao.jpeg",
+          nome: "Suco de maracujá",
+          imagem: "/maracuja.jpg",
           value: bebida,
           setvalue: setbebida
         },
@@ -129,6 +129,8 @@ export default function Menu() {
     if(!pedidoFeito){
       Cookies.set("pedido", true)
       axios.post("/api/newOrder", pedido)
+    }else{
+      redirect("/negado")
     }
   }
 

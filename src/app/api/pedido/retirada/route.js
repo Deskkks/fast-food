@@ -1,13 +1,9 @@
 ﻿import { PrismaClient } from "@/generated/prisma"
 import Data from "../data.js"
-import { cookies } from "next/headers.js"
+
+const prisma = new PrismaClient()
 
 export async function GET() {
-
-  const cookieStore = await cookies()
-  const code = cookieStore.get("userCode")
-
-  const prisma = new PrismaClient()
 
   const comandas = await prisma.commands.findMany({
     include: {
@@ -19,7 +15,7 @@ export async function GET() {
     }
   })
 
-  const data = Data(comandas, code)
+  const data = await Data(comandas)
 
   return Response.json(data)
 }

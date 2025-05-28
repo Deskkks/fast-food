@@ -1,24 +1,27 @@
 ﻿import { PrismaClient } from "@/generated/prisma"
 
-export default function Data(comandas, code){
+const prisma = new PrismaClient()
 
-  const prisma = new PrismaClient()
+export default async function Data(comandas){
+
+  const data = await Promise.all(comandas.map(async(comanda) => {
+    let id
   
-  let data = []
-
-  comandas.map((comanda) => {
-
-    const id = prisma.codes.findUnique({
+    const find = await prisma.codes.findUnique({
       where: {
-        code: code
+        code: comanda.userId
       }
     })
 
-    let newData
+    if(comanda.userId !== "oP8q4dzAE5Wakthh2n4694") {
+      id = find.id
+    } else {
+      id = 26
+    }
     let salgado
     let doce
     let bebida
-    comanda.orders.map(pedido => {
+    comanda.orders.forEach(pedido => {
       if(pedido.tipo === "salgado"){
         salgado = pedido.produto
       }
@@ -29,16 +32,14 @@ export default function Data(comandas, code){
         bebida = pedido.produto
       }
     })
-    newData = {
+    return {
       nome: comanda.nome,
-      id: id.id,
+      id: id,
       salgado: salgado,
       doce: doce,
       bebida: bebida,
       userId: comanda.userId
     }
-    data.push(newData)
-  })
-
+  }))
   return data
 }
